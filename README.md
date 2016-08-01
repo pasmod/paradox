@@ -1,2 +1,2 @@
-# paradox
-Paraphrasing Detection in Hindi Languages
+# Paradox: An End-to-End System for Paraphrase Detection
+
