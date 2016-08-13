@@ -9,7 +9,6 @@ RUN conda install -y \
   numpy \
   scipy \
   scikit-learn \
-  nltk \
   h5py
 
 RUN apt-get update && \
@@ -28,10 +27,6 @@ ARG KERAS_VERSION=1.0.7
 ENV KERAS_BACKEND=tensorflow
 RUN pip --no-cache-dir install --no-dependencies git+https://github.com/fchollet/keras.git@${KERAS_VERSION}
 
-
-
-
-RUN python -c "import nltk; nltk.download('stopwords'); nltk.download('punkt'); nltk.download('wordnet')" 
 RUN pip install pytest
 RUN pip install pytest-pep8
 
