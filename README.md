@@ -7,5 +7,5 @@ Number of sentences in the training corpora
 
 |     | Task 1 | Task 2 |
 |:---:|:------:|:------:|
-| Malayalam |  250 | 350  |
-| Tamil | 250  | 350  |
+| Malayalam |  2500 | 3500  |
+| Tamil | 2500  | 3500  |
