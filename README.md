@@ -13,7 +13,7 @@ Number of sentences in the training corpora
 
 Number of training instances per classes in the training corpora
 
- |     | Paraphrase | Not Paraphrase | SP |
+|     | Paraphrase | Not Paraphrase | SP |
 |:---:|:------:|:------:|:------:|
 | Malayalam Task 1 |  1000 | 1500  | 0 |
 | Malayalam Task 2 |  1000 | 1500  | 1000 |
