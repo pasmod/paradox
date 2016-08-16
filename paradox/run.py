@@ -2,7 +2,6 @@
 from parsers.corpus_parser import parse
 from evaluation.training_test_split import split_training_data
 from evaluation.count_vectorizer_word_baseline import estimate_svm_baseline
-from tokenizers.hindi_tokenizer import Tokenizer
 
 import codecs
 import sys
