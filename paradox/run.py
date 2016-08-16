@@ -24,3 +24,6 @@ X_punjabi_task2, y_punjabi_task2 = parse(path='../corpora/Punjabi/dpil-punjabi-t
 
 test_train_split_malayalam_task1 = split_training_data(X_malayalam_task1, y_malayalam_task1)
 estimate_svm_baseline(test_train_split_malayalam_task1)
+
+test_train_split_malayalam_task2 = split_training_data(X_malayalam_task2, y_malayalam_task2)
+estimate_svm_baseline(test_train_split_malayalam_task2)
