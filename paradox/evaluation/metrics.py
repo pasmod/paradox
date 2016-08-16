@@ -6,8 +6,7 @@ import numpy as np
 
 def calculate_and_print_metrics(y_true, y_pred):
     accuracy = accuracy_score(y_true, y_pred)
-
-    print '*' * 20
+    print "*** Results ***" + '*' * 5
     print "Accuracy:" + str(accuracy)
     f1 = f1_score(y_true, y_pred, average=None)
     print "Macro F1:" + str(f1)

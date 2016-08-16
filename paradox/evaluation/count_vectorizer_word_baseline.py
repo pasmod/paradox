@@ -24,6 +24,7 @@ def estimate_svm_baseline(test_train_split):
     calculate_and_print_metrics(test_train_split['y_test'], predicted_classes)
     print("Total execution time in %0.3fs" % (time() - t0))
     print '*' * 20
+    print ''
 
 
 def create_pipeline(test_train_split):
