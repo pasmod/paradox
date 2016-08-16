@@ -9,6 +9,7 @@ RUN conda install -y \
   numpy \
   scipy \
   scikit-learn \
+  matplotlib \
   h5py
 
 RUN apt-get update && \
