@@ -6,11 +6,13 @@ from metrics import calculate_and_print_metrics
 from sklearn.grid_search import GridSearchCV
 from time import time
 from utils.item_selector import ItemSelector
+from tokenizers.hindi_tokenizer import Tokenizer
 
 
 def estimate_svm_baseline(test_train_split):
     t0 = time()
-    pipeline = create_pipeline(test_train_split)
+    use_hindi_tokenizer = True
+    pipeline = create_pipeline(test_train_split, use_hindi_tokenizer)
 
     param_grid = {'svm__C': [1e3, 5e3, 1e4, 5e4, 1e5],
                   'svm__gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1]}
@@ -27,17 +29,26 @@ def estimate_svm_baseline(test_train_split):
     print ''
 
 
-def create_pipeline(test_train_split):
+def hindi_tokenizer(s):
+    tokenizer = Tokenizer(s)
+    tokenizer.tokenize()
+    return tokenizer.tokens
+
+
+def create_pipeline(test_train_split, use_hindi_tokenizer=True):
+    tokenizer = None
+    if use_hindi_tokenizer:
+        tokenizer = hindi_tokenizer
     return Pipeline([
         ('union', FeatureUnion(
             transformer_list=[
                 ('sentence_a', Pipeline([
                     ('selector', ItemSelector(dimension=0)),
-                    ('vect', CountVectorizer()),
+                    ('vect', CountVectorizer(tokenizer=tokenizer)),
                 ])),
                 ('sentence_b', Pipeline([
                     ('selector', ItemSelector(dimension=1)),
-                    ('vect', CountVectorizer()),
+                    ('vect', CountVectorizer(tokenizer=tokenizer)),
                 ])),
             ],
         )),

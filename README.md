@@ -30,8 +30,10 @@ Number of training instances per classes in the training corpora
 ## Results as Average F1 Measure
 
 a) Baseline CountVectorizer mit default Tokenizer, SVM Gridearch
+b) Baseline CountVectorizer mit Hindi Tokenizer, SVM Gridearch
 
 | Method    | Mal T1 | Mal T2 |
 |:---:|:------:|:------:|
 | a) |  0.697 |  0.581 |
+| b) |   |   |
 
