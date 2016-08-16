@@ -2,10 +2,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.svm import SVC
 from sklearn.pipeline import FeatureUnion
-from sklearn.base import BaseEstimator, TransformerMixin
 from metrics import calculate_and_print_metrics
 from sklearn.grid_search import GridSearchCV
 from time import time
+from utils.item_selector import ItemSelector
 
 
 def estimate_svm_baseline(test_train_split):
@@ -43,15 +43,3 @@ def create_pipeline(test_train_split):
         )),
         ('svm', SVC()),
     ])
-
-
-class ItemSelector(BaseEstimator, TransformerMixin):
-    def __init__(self, dimension):
-        self.dimension = dimension
-
-    def fit(self, x, y=None):
-        return self
-
-    def transform(self, X):
-        projection = [(x[self.dimension]) for x in X]
-        return projection
