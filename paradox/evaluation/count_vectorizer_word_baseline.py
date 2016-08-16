@@ -5,9 +5,11 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.base import BaseEstimator, TransformerMixin
 from metrics import calculate_and_print_metrics
 from sklearn.grid_search import GridSearchCV
+from time import time
 
 
 def estimate_svm_baseline(test_train_split):
+    t0 = time()
     pipeline = create_pipeline(test_train_split)
 
     param_grid = {'svm__C': [1e3, 5e3, 1e4, 5e4, 1e5],
@@ -20,6 +22,8 @@ def estimate_svm_baseline(test_train_split):
     # pipeline.fit(test_train_split['X_train'], test_train_split['y_train'])
     # predicted_classes = pipeline.predict(test_train_split['X_test'])
     calculate_and_print_metrics(test_train_split['y_test'], predicted_classes)
+    print("Total execution time in %0.3fs" % (time() - t0))
+    print '*' * 20
 
 
 def create_pipeline(test_train_split):
