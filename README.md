@@ -34,6 +34,6 @@ b) Baseline CountVectorizer mit Hindi Tokenizer, SVM Gridearch
 
 | Method    | Mal T1 | Mal T2 |
 |:---:|:------:|:------:|
-| a) |  0.697 |  0.581 |
-| b) |   |   |
+| a) |  0.697  |  0.581 |
+| b) |  0.7157 |  0.690 |
 
