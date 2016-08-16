@@ -25,3 +25,13 @@ Number of training instances per classes in the training corpora
 | Hindi Task 2 |  1000 | 1500  | 1000 |
 | Punjabi Task 1 |  700 | 1000  | 0 |
 | Punjabi Task 2 |  700 | 1000  | 500 |
+
+
+## Results as Average F1 Measure
+
+a) Baseline CountVectorizer mit default Tokenizer, SVM Gridearch
+
+| Method    | Mal T1 | Mal T2 |
+|:---:|:------:|:------:|
+| a) |  0.697 |  0.581 |
+
