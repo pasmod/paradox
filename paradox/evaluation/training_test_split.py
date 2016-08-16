@@ -7,4 +7,4 @@ def split_training_data(X, y):
     return {'X_train': X_train,
             'X_test': X_test,
             'y_train': y_train,
-            'y_test_': y_test}
+            'y_test': y_test}
