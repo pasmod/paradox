@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from parsers.corpus_parser import parse
 from loaders.corpus_loader import load_all_languages
 from evaluation.training_test_split import split_training_data
 from evaluation.count_vectorizer_word_baseline import estimate_svm_baseline
