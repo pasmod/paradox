@@ -12,7 +12,7 @@ data_sets = load_all_languages()
 
 for language, language_data_set in data_sets.iteritems():
     print 'Evaluating {}'.format(language)
-    for x in range(1, 2):
+    for x in range(1, 3):
         key = 'Task{}'.format(x)
         print('>> ' + key)
         test_train_split = split_training_data(language_data_set[key][0], language_data_set[key][1])
