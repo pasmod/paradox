@@ -32,8 +32,8 @@ Number of training instances per classes in the training corpora
 a) Baseline CountVectorizer mit default Tokenizer, SVM Gridearch
 b) Baseline CountVectorizer mit Hindi Tokenizer, SVM Gridearch
 
-| Method    | Mal T1 | Mal T2 |
-|:---:|:------:|:------:|
-| a) |  0.697  |  0.581 |
-| b) |  0.7157 |  0.690 |
+| Method    | Malayalam T1 | Malayalam T2 | Punjabi T1 | Punjabi T2 | Hindi T1 | Hindi T2 | Tamil T1 | Tamil T2 |
+|:---:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| a) |  0.697  |  0.581 | | | | | | |
+| b) |  0.7157 |  0.690 | 0.39 | 0.25 | 0.417 | | 0.845 | 0.613 |
 
