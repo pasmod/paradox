@@ -9,17 +9,17 @@ import sys
 UTF8Writer = codecs.getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-X_malayalam_task1, y_malayalam_task1 = parse(path='../corpora/Malayalam/dpil-mal-train-Task1.xml')
-X_malayalam_task2, y_malayalam_task2 = parse(path='../corpora/Malayalam/dpil-mal-train-Task2.xml')
+X_malayalam_task1, y_malayalam_task1 = parse(path='../corpora/Malayalam/dpil-Malayalam-train-Task1.xml')
+X_malayalam_task2, y_malayalam_task2 = parse(path='../corpora/Malayalam/dpil-Malayalam-train-Task2.xml')
 
-X_tamil_task1, y_tamil_task1 = parse(path='../corpora/Tamil/dpil-tam-train-Task1.xml')
-X_tamil_task2, y_tamil_task2 = parse(path='../corpora/Tamil/dpil-tam-train-Task2.xml')
+X_tamil_task1, y_tamil_task1 = parse(path='../corpora/Tamil/dpil-Tamil-train-Task1.xml')
+X_tamil_task2, y_tamil_task2 = parse(path='../corpora/Tamil/dpil-Tamil-train-Task2.xml')
 
-X_hindi_task1, y_hindi_task1 = parse(path='../corpora/Hindi/dpil-hindi-train-Task1.xml')
-X_hindi_task2, y_hindi_task2 = parse(path='../corpora/Hindi/dpil-hindi-train-Task2.xml')
+X_hindi_task1, y_hindi_task1 = parse(path='../corpora/Hindi/dpil-Hindi-train-Task1.xml')
+X_hindi_task2, y_hindi_task2 = parse(path='../corpora/Hindi/dpil-Hindi-train-Task2.xml')
 
-X_punjabi_task1, y_punjabi_task1 = parse(path='../corpora/Punjabi/dpil-punjabi-train-Task1.xml')
-X_punjabi_task2, y_punjabi_task2 = parse(path='../corpora/Punjabi/dpil-punjabi-train-Task2.xml')
+X_punjabi_task1, y_punjabi_task1 = parse(path='../corpora/Punjabi/dpil-Punjabi-train-Task1.xml')
+X_punjabi_task2, y_punjabi_task2 = parse(path='../corpora/Punjabi/dpil-Punjabi-train-Task2.xml')
 
 test_train_split_malayalam_task1 = split_training_data(X_malayalam_task1, y_malayalam_task1)
 estimate_svm_baseline(test_train_split_malayalam_task1)
