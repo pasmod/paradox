@@ -1,28 +1,21 @@
 # -*- coding: utf-8 -*-
 from parsers.corpus_parser import parse
+from loaders.corpus_loader import load_all_languages
 from evaluation.training_test_split import split_training_data
 from evaluation.count_vectorizer_word_baseline import estimate_svm_baseline
-
 import codecs
 import sys
 
 UTF8Writer = codecs.getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-X_malayalam_task1, y_malayalam_task1 = parse(path='../corpora/Malayalam/dpil-Malayalam-train-Task1.xml')
-X_malayalam_task2, y_malayalam_task2 = parse(path='../corpora/Malayalam/dpil-Malayalam-train-Task2.xml')
+data_sets = load_all_languages()
 
-X_tamil_task1, y_tamil_task1 = parse(path='../corpora/Tamil/dpil-Tamil-train-Task1.xml')
-X_tamil_task2, y_tamil_task2 = parse(path='../corpora/Tamil/dpil-Tamil-train-Task2.xml')
-
-X_hindi_task1, y_hindi_task1 = parse(path='../corpora/Hindi/dpil-Hindi-train-Task1.xml')
-X_hindi_task2, y_hindi_task2 = parse(path='../corpora/Hindi/dpil-Hindi-train-Task2.xml')
-
-X_punjabi_task1, y_punjabi_task1 = parse(path='../corpora/Punjabi/dpil-Punjabi-train-Task1.xml')
-X_punjabi_task2, y_punjabi_task2 = parse(path='../corpora/Punjabi/dpil-Punjabi-train-Task2.xml')
-
-test_train_split_malayalam_task1 = split_training_data(X_malayalam_task1, y_malayalam_task1)
-estimate_svm_baseline(test_train_split_malayalam_task1)
-
-test_train_split_malayalam_task2 = split_training_data(X_malayalam_task2, y_malayalam_task2)
-estimate_svm_baseline(test_train_split_malayalam_task2)
+for language, language_data_set in data_sets.iteritems():
+    print 'Evaluating {}'.format(language)
+    for x in range(1, 2):
+        key = 'Task{}'.format(x)
+        print('>> ' + key)
+        test_train_split = split_training_data(language_data_set[key][0], language_data_set[key][1])
+        estimate_svm_baseline(test_train_split)
+    print ''
