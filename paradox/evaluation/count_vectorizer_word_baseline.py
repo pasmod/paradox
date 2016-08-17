@@ -9,9 +9,8 @@ from utils.item_selector import ItemSelector
 from tokenizers.hindi_tokenizer import Tokenizer
 
 
-def estimate_svm_baseline(test_train_split):
+def estimate_svm_baseline(test_train_split, use_hindi_tokenizer=True):
     t0 = time()
-    use_hindi_tokenizer = True
     pipeline = create_pipeline(test_train_split, use_hindi_tokenizer)
 
     param_grid = {'svm__C': [1e3, 5e3, 1e4, 5e4, 1e5],
