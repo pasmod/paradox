@@ -25,3 +25,21 @@ def create_count_vectorizer_pipeline(use_hindi_tokenizer=True):
         )),
         ('svm', SVC()),
     ])
+
+
+def create_char_count_vectorizer_pipeline():
+    return Pipeline([
+        ('union', FeatureUnion(
+            transformer_list=[
+                ('sentence_a', Pipeline([
+                    ('selector', ItemSelector(dimension=0)),
+                    ('vect', CountVectorizer(analyzer='char_wb')),
+                ])),
+                ('sentence_b', Pipeline([
+                    ('selector', ItemSelector(dimension=1)),
+                    ('vect', CountVectorizer(analyzer='char_wb')),
+                ])),
+            ],
+        )),
+        ('svm', SVC()),
+    ])
