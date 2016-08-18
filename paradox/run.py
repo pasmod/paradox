@@ -16,17 +16,25 @@ sys.stdout = UTF8Writer(sys.stdout)
 
 def evaluate(test_train_split, method_name):
     if method_name == 'svm_baseline_default_tokenizer':
-        pipeline = create_count_vectorizer_pipeline(hindi_tokenize)
+        pipeline = create_count_vectorizer_pipeline()
         estimate_svm_baseline(pipeline, test_train_split)
     elif method_name == 'svm_baseline_default_tokenizer_with_vocabulary':
-        vocabulary = get_vocabulary(test_train_split['X_train'], hindi_tokenize)
-        pipeline = create_count_vectorizer_pipeline(hindi_tokenize, vocabulary)
+        vocabulary = get_vocabulary(test_train_split['X_train'], tokenizer=None)
+        pipeline = create_count_vectorizer_pipeline(vocabulary=vocabulary)
         estimate_svm_baseline(pipeline, test_train_split)
     elif method_name == 'svm_baseline_hindi_tokenizer':
-        pipeline = create_count_vectorizer_pipeline()
+        pipeline = create_count_vectorizer_pipeline(tokenizer=hindi_tokenize)
+        estimate_svm_baseline(pipeline, test_train_split)
+    elif method_name == 'svm_baseline_hindi_tokenizer_with_vocabulary':
+        vocabulary = get_vocabulary(test_train_split['X_train'], tokenizer=hindi_tokenize)
+        pipeline = create_count_vectorizer_pipeline(vocabulary=vocabulary, tokenizer=hindi_tokenize)
         estimate_svm_baseline(pipeline, test_train_split)
     elif method_name == 'svm_baseline_character_count_vectorizer':
         pipeline = create_char_count_vectorizer_pipeline()
+        estimate_svm_baseline(pipeline, test_train_split)
+    elif method_name == 'svm_baseline_character_count_vectorizer_with_vocabulary':
+        vocabulary = get_vocabulary(test_train_split['X_train'], analyzer='char_wb')
+        pipeline = create_char_count_vectorizer_pipeline(vocabulary=vocabulary)
         estimate_svm_baseline(pipeline, test_train_split)
 
 
