@@ -5,17 +5,17 @@ from sklearn.pipeline import FeatureUnion
 from utils.item_selector import ItemSelector
 
 
-def create_count_vectorizer_pipeline(tokenizer=None):
+def create_count_vectorizer_pipeline(tokenizer=None, vocabulary=None):
     return Pipeline([
         ('union', FeatureUnion(
             transformer_list=[
                 ('sentence_a', Pipeline([
                     ('selector', ItemSelector(dimension=0)),
-                    ('vect', CountVectorizer(tokenizer=tokenizer)),
+                    ('vect', CountVectorizer(tokenizer=tokenizer, vocabulary=vocabulary)),
                 ])),
                 ('sentence_b', Pipeline([
                     ('selector', ItemSelector(dimension=1)),
-                    ('vect', CountVectorizer(tokenizer=tokenizer)),
+                    ('vect', CountVectorizer(tokenizer=tokenizer, vocabulary=vocabulary)),
                 ])),
             ],
         )),
@@ -23,17 +23,17 @@ def create_count_vectorizer_pipeline(tokenizer=None):
     ])
 
 
-def create_char_count_vectorizer_pipeline():
+def create_char_count_vectorizer_pipeline(vocabulary=None):
     return Pipeline([
         ('union', FeatureUnion(
             transformer_list=[
                 ('sentence_a', Pipeline([
                     ('selector', ItemSelector(dimension=0)),
-                    ('vect', CountVectorizer(analyzer='char_wb')),
+                    ('vect', CountVectorizer(analyzer='char_wb', vocabulary=vocabulary)),
                 ])),
                 ('sentence_b', Pipeline([
                     ('selector', ItemSelector(dimension=1)),
-                    ('vect', CountVectorizer(analyzer='char_wb')),
+                    ('vect', CountVectorizer(analyzer='char_wb', vocabulary=vocabulary)),
                 ])),
             ],
         )),
