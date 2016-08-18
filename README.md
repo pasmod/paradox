@@ -19,7 +19,7 @@ Number of training instances per classes in the training corpora
 
 ## Results as Average F1 Measure
 
-<ul>
+<ul style="list-style-type: none;">
     <li style="list-style-type: none;">a) Baseline CountVectorizer with default Tokenizer, SVM Gridsearch</li>
     <li style="list-style-type: none;">b) Baseline CountVectorizer with Hindi Tokenizer, SVM Gridsearch</li>
     <li style="list-style-type: none;">c) Baseline CountVectorizer with character analyzer</li>
