@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from loaders.corpus_loader import load_all_languages
 from evaluation.training_test_split import split_training_data
-from evaluation.count_vectorizer_word_baseline import estimate_svm_baseline
+from evaluation.svm_baseline import estimate_svm_baseline
+from pipelines.count_vectorizer_pipeline import create_count_vectorizer_pipeline
+import pipelines
 import codecs
 import sys
 
@@ -11,9 +13,11 @@ sys.stdout = UTF8Writer(sys.stdout)
 
 def evaluate(test_train_split, method_name):
     if method_name == 'svm_baseline_default_tokenizer':
-        estimate_svm_baseline(test_train_split)
+        pipeline = create_count_vectorizer_pipeline(False)
+        estimate_svm_baseline(pipeline, test_train_split)
     elif method_name == 'svm_baseline_hindi_tokenizer':
-        estimate_svm_baseline(test_train_split, True)
+        pipeline = create_count_vectorizer_pipeline()
+        estimate_svm_baseline(pipeline, test_train_split)
 
 
 data_sets = load_all_languages()
