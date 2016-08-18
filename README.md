@@ -3,28 +3,18 @@
 
 ## Corpus Statistics
 
-Number of sentences in the training corpora
-
-|     | Task 1 | Task 2 |
-|:---:|:------:|:------:|
-| Malayalam |  2500 | 3500  |
-| Tamil | 2500  | 3500  |
-| Hindi | 2500  | 3500  |
-| Punjabi | 1700  | 2200  |
-
-
 Number of training instances per classes in the training corpora
 
-|     | Paraphrase | Not Paraphrase | SP |
-|:---:|:------:|:------:|:------:|
-| Malayalam Task 1 |  1000 | 1500  | 0 |
-| Malayalam Task 2 |  1000 | 1500  | 1000 |
-| Tamil Task 1 |  1000 | 1500  | 0 |
-| Tamil Task 2 |  1000 | 1500  | 1000 |
-| Hindi Task 1 |  1000 | 1500  | 0 |
-| Hindi Task 2 |  1000 | 1500  | 1000 |
-| Punjabi Task 1 |  700 | 1000  | 0 |
-| Punjabi Task 2 |  700 | 1000  | 500 |
+|     | Paraphrase | Not Paraphrase | SP | Total
+|:---:|:------:|:------:|:------:|:------:|
+| Malayalam Task 1 |  1000 | 1500  | 0 | 2500 |
+| Malayalam Task 2 |  1000 | 1500  | 1000 | 3500 |
+| Tamil Task 1 |  1000 | 1500  | 0 | 2500 |
+| Tamil Task 2 |  1000 | 1500  | 1000 | 3500 |
+| Hindi Task 1 |  1000 | 1500  | 0 | 2500 |
+| Hindi Task 2 |  1000 | 1500  | 1000 | 3500 |
+| Punjabi Task 1 |  700 | 1000  | 0 | 1700 |
+| Punjabi Task 2 |  700 | 1000  | 500 | 2200 |
 
 
 ## Results as Average F1 Measure
