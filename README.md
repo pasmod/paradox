@@ -21,13 +21,19 @@ Number of training instances per classes in the training corpora
 
 <ol type="a">
     <li>Baseline CountVectorizer with default Tokenizer, SVM Gridsearch</li>
+    <li>Baseline CountVectorizer with default Tokenizer, SVM Gridsearch, shared vocabulary</li>
     <li>Baseline CountVectorizer with Hindi Tokenizer, SVM Gridsearch</li>
+    <li>Baseline CountVectorizer with Hindi Tokenizer, SVM Gridsearch, shared vocabulary</li>
     <li>Baseline CountVectorizer with character analyzer</li>
+    <li>Baseline CountVectorizer with character analyzer, shared vocabulary</li>
 <ol>
 
 | Method    | Malayalam T1 | Malayalam T2 | Punjabi T1 | Punjabi T2 | Hindi T1 | Hindi T2 | Tamil T1 | Tamil T2 |
 |:---:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
 | a) |  0.697  |  0.581 | 0.414 | 0.329 | 0.411 | 0.496 | 0.825 | 0.626 |
-| b) |  0.715  |  0.690 | 0.390 | 0.250 | 0.417 | 0.440 | 0.845 | 0.613 |
-| c) |  0.741  |  0.721 | 0.815 | 0.768 | 0.724 | 0.663 | 0.840 | 0.700 |
+| b) |  0.712  |  0.686 | 0.390 | 0.248 | 0.405 | 0.440 | 0.845 | 0.607 |
+| c) |  0.715  |  0.690 | 0.390 | 0.250 | 0.417 | 0.440 | 0.845 | 0.613 |
+| d) |         |        |       |       |       |       |       |       |
+| e) |  0.741  |  0.721 | 0.815 | 0.768 | 0.724 | 0.663 | 0.840 | 0.700 |
+| f) |         |        |       |       |       |       |       |       |
 
