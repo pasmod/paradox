@@ -4,6 +4,8 @@ from evaluation.training_test_split import split_training_data
 from evaluation.svm_baseline import estimate_svm_baseline
 from pipelines.count_vectorizer_pipeline import create_count_vectorizer_pipeline
 from pipelines.count_vectorizer_pipeline import create_char_count_vectorizer_pipeline
+from utils.vocabulary_extractor import get_vocabulary
+from tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
 import pipelines
 import codecs
 import sys
@@ -14,7 +16,11 @@ sys.stdout = UTF8Writer(sys.stdout)
 
 def evaluate(test_train_split, method_name):
     if method_name == 'svm_baseline_default_tokenizer':
-        pipeline = create_count_vectorizer_pipeline(False)
+        pipeline = create_count_vectorizer_pipeline(hindi_tokenize)
+        estimate_svm_baseline(pipeline, test_train_split)
+    elif method_name == 'svm_baseline_default_tokenizer_with_vocabulary':
+        vocabulary = get_vocabulary(test_train_split['X_train'], hindi_tokenize)
+        pipeline = create_count_vectorizer_pipeline(hindi_tokenize, vocabulary)
         estimate_svm_baseline(pipeline, test_train_split)
     elif method_name == 'svm_baseline_hindi_tokenizer':
         pipeline = create_count_vectorizer_pipeline()
@@ -25,7 +31,7 @@ def evaluate(test_train_split, method_name):
 
 
 data_sets = load_all_languages()
-evaluation_method_name = 'svm_baseline_character_count_vectorizer'
+evaluation_method_name = 'svm_baseline_default_tokenizer_with_vocabulary'
 for language, language_data_set in data_sets.iteritems():
     print 'Evaluating {}'.format(language)
     for x in range(1, 3):
