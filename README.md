@@ -20,14 +20,14 @@ Number of training instances per classes in the training corpora
 ## Results as Average F1 Measure
 
 <ol type="a">
-    <li>a) Baseline CountVectorizer with default Tokenizer, SVM Gridsearch</li>
-    <li>b) Baseline CountVectorizer with Hindi Tokenizer, SVM Gridsearch</li>
-    <li>c) Baseline CountVectorizer with character analyzer</li>
+    <li>Baseline CountVectorizer with default Tokenizer, SVM Gridsearch</li>
+    <li>Baseline CountVectorizer with Hindi Tokenizer, SVM Gridsearch</li>
+    <li>Baseline CountVectorizer with character analyzer</li>
 <ol>
 
 | Method    | Malayalam T1 | Malayalam T2 | Punjabi T1 | Punjabi T2 | Hindi T1 | Hindi T2 | Tamil T1 | Tamil T2 |
 |:---:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
 | a) |  0.697  |  0.581 | 0.414 | 0.329 | 0.411 | 0.496 | 0.825 | 0.626 |
 | b) |  0.715  |  0.690 | 0.390 | 0.250 | 0.417 | 0.440 | 0.845 | 0.613 |
-| c) |  0.741  |  0.721 | 0.815 | 0.768 |       |       | 0.840 | 0.700 |
+| c) |  0.741  |  0.721 | 0.815 | 0.768 | 0.724 | 0.663 | 0.840 | 0.700 |
 
