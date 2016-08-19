@@ -13,3 +13,8 @@ def calculate_and_print_metrics(y_true, y_pred):
     print "Average F1:" + str(np.mean(f1))
     print "Confusion matrix"
     print(ConfusionMatrix(y_true, y_pred))
+
+
+def evaluate_keras_predictions(y_true, predicted_values):
+    predicted_classes = np.argmax(predicted_values, axis=1)
+    calculate_and_print_metrics(y_true, predicted_classes)
