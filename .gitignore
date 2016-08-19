@@ -2,3 +2,4 @@
 .idea/
 .cache/
 paradox/test.py
+trained_models/temp/*.model

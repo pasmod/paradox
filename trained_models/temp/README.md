@@ -1,0 +1,1 @@
+Tempfile in order to check in the directory /trained_models/temp
