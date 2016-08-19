@@ -6,7 +6,6 @@ from pipelines.count_vectorizer_pipeline import create_count_vectorizer_pipeline
 from pipelines.count_vectorizer_pipeline import create_char_count_vectorizer_pipeline
 from utils.vocabulary_extractor import get_vocabulary
 from tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
-import pipelines
 import codecs
 import sys
 
