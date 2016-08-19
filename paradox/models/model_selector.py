@@ -1,4 +1,4 @@
-from models.first_approach import get_model as FirstTest
+from paradox.models.first_approach import get_model as FirstTest
 
 
 def get_model(name, length_input_layer, number_of_classes):

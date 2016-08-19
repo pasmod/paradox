@@ -1,7 +1,7 @@
 from corpus_loader import load_all_languages
-from evaluation.training_test_split import split_training_data
-from utils.vocabulary_extractor import get_vocabulary
-from utils.one_hot_encoder import get_one_hot_encoding
+from paradox.evaluation.training_test_split import split_training_data
+from paradox.utils.vocabulary_extractor import get_vocabulary
+from paradox.utils.one_hot_encoder import get_one_hot_encoding
 from keras.utils.np_utils import to_categorical
 import numpy as np
 

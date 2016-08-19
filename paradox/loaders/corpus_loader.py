@@ -1,4 +1,4 @@
-from parsers.corpus_parser import parse
+from paradox.parsers.corpus_parser import parse
 
 
 def load_data_set(language, task_number):
