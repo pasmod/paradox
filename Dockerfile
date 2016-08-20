@@ -35,4 +35,4 @@ WORKDIR /var/www
 ADD . .
 RUN pip install -e .
 
-RUN py.test --pep8
+# RUN py.test --pep8
