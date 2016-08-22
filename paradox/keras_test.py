@@ -13,9 +13,9 @@ length_input_layer = len(data_set['vocabulary']) * 2
 
 # ***** Keras parameters *****
 batch_size = 128
-nb_epoch = 20
+nb_epoch = 200
 # ****************************
-model_name = 'first_approach'
+model_name = 'cnn_approach'
 model = get_model(model_name, length_input_layer=length_input_layer, number_of_classes=number_of_classes)
 compile_optimizer('adagrad', model)
 
