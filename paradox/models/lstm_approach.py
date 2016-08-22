@@ -12,6 +12,8 @@ def get_model(length_input_layer, number_of_classes):
     #model.add(Convolution1D(64, 1, border_mode='same', input_shape=(1, length_input_layer)))
     # model.add(LSTM(128, input_shape=(40, length_input_layer)))
     # model.add(LSTM(128, input_dim=length_input_layer))
+    model.add(Dense(64))
+    model.add(Dense(30))
     model.add(Dense(number_of_classes))
     model.add(Activation('softmax'))
     return model
