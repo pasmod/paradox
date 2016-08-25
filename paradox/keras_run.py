@@ -6,7 +6,7 @@ from loaders.keras_loader import DataSetType
 from encoders import models
 from optimizer.optimizer_selector import compile_optimizer
 from evaluation.metrics import evaluate_keras_predictions
-
+from keras.optimizers import SGD, Adagrad
 import time
 
 number_of_classes = 2
@@ -19,7 +19,8 @@ def run_simple_model(number_of_classes=number_of_classes, language=language, dat
     data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=True)
     length_input_layer = len(data_set['vocabulary']) * 2
     model = models.simple_model(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
-    compile_optimizer('adagrad', model)
+
+    model.compile(loss='categorical_crossentropy', optimizer=Adagrad(lr=0.01, epsilon=1e-08), metrics=['accuracy'])
     model.fit(data_set['X_train'], data_set['y_train'],
               nb_epoch=nb_epoch,
               batch_size=batch_size)
