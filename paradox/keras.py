@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-
-np.random.seed(1337)
+# np.random.seed(1337)
 from loaders.keras_loader import load_keras_data_set
 from encoders import models
 from optimizer.optimizer_selector import compile_optimizer
