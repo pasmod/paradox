@@ -3,3 +3,4 @@
 .cache/
 paradox/test.py
 trained_models/temp/*.model
+trained_models/temp/*.hdf5
