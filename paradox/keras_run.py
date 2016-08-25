@@ -19,11 +19,9 @@ def run_simple_model(nb_epoch=200, batch_size=128):
     model.fit(data_set['X_train'], data_set['y_train'],
               nb_epoch=nb_epoch,
               batch_size=batch_size)
-
+    evaluate_keras_predictions(data_set['y_test'], model.predict(data_set['X_test']))
+    print model.evaluate(data_set['X_test'], data_set['y_test_categorical'], batch_size=batch_size)
     return model
 
-
 model = run_simple_model()
-evaluate_keras_predictions(data_set['y_test'], model.predict(data_set['X_test']))
-print model.evaluate(data_set['X_test'], data_set['y_test_categorical'], batch_size=batch_size)
 model.save('/var/www/trained_models/temp/{}.model'.format(time.strftime("%Y%m%d_%H%M%S")))
