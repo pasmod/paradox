@@ -6,7 +6,8 @@ from keras.utils.np_utils import to_categorical
 import numpy as np
 
 
-def load_keras_data_set(language, number_of_classes, task='Task1', analyzer='char_wb'):
+def load_keras_data_set(language, number_of_classes, analyzer='char_wb'):
+    task='Task1'
     if number_of_classes == 3:
         task = 'Task2'
     data_sets = load_all_languages()
