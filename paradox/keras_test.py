@@ -2,7 +2,7 @@
 import numpy as np
 np.random.seed(1337)
 from loaders.keras_loader import load_keras_data_set
-from models.model_selector import get_model
+from encoders.model_selector import get_model
 from optimizer.optimizer_selector import compile_optimizer
 from evaluation.metrics import evaluate_keras_predictions
 import time
@@ -15,7 +15,7 @@ length_input_layer = len(data_set['vocabulary']) * 2
 batch_size = 128
 nb_epoch = 200
 # ****************************
-model_name = 'cnn_approach'
+model_name = 'first_approach'
 model = get_model(model_name, length_input_layer=length_input_layer, number_of_classes=number_of_classes)
 compile_optimizer('adagrad', model)
 
