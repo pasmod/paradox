@@ -16,7 +16,7 @@ def load_keras_data_set(language, number_of_classes, data_set_type, concat_vecto
     analyzer = ''
     if data_set_type == DataSetType.one_hot_encoding_character or data_set_type == DataSetType.one_hot_encoding_word:
         analyzer = 'char_wb'
-        if data_set_type == data_set_type == DataSetType.one_hot_encoding_word:
+        if data_set_type == DataSetType.one_hot_encoding_word:
             analyzer = 'word'
         vocabulary = get_vocabulary(test_train_split['X_train'], analyzer=analyzer, ngram_range=ngram_range)
         X_train = get_one_hot_encoding(test_train_split['X_train'], vocabulary=vocabulary, analyzer=analyzer,
