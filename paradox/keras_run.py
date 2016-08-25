@@ -18,8 +18,8 @@ def run_simple_model(number_of_classes=number_of_classes, language=language, dat
                      batch_size=128):
     data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=True)
     length_input_layer = len(data_set['vocabulary']) * 2
+    batch_size = len(data_set['X_train'])
     model = models.simple_model(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
-
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08))
     checkpoint = ModelCheckpoint("/var/www/trained_models/temp/simple_encoder.model."
