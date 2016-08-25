@@ -10,11 +10,13 @@ def calculate_and_print_metrics(y_true, y_pred):
     print "Accuracy:" + str(accuracy)
     f1 = f1_score(y_true, y_pred, average=None)
     print "Macro F1:" + str(f1)
-    print "Average F1:" + str(np.mean(f1))
+    avg_f1 = str(np.mean(f1))
+    print "Average F1:" + avg_f1
     print "Confusion matrix"
     print(ConfusionMatrix(y_true, y_pred))
+    return avg_f1
 
 
 def evaluate_keras_predictions(y_true, predicted_values):
     predicted_classes = np.argmax(predicted_values, axis=1)
-    calculate_and_print_metrics(y_true, predicted_classes)
+    return calculate_and_print_metrics(y_true, predicted_classes)
