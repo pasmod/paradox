@@ -27,9 +27,6 @@ def load_keras_data_set(language, number_of_classes, data_set_type, concat_vecto
         raise NotImplementedError
     elif data_set_type == DataSetType.sequence_word:
         raise NotImplementedError
-
-    print type(X_train)
-    print type(X_test)
     return {'X_train': X_train,
             'X_test': X_test,
             'y_train': to_categorical(np.array(test_train_split['y_train']), number_of_classes),
