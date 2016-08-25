@@ -2,7 +2,7 @@ from loggers.logstash_formatter import LogstashFormatterV2
 import logging
 
 
-def config_logger(log_level=logging.INFO):
+def config_logger(log_level=logging.WARNING):
     """Configures the logger
     """
     logger = logging.getLogger()

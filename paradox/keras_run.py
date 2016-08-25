@@ -9,7 +9,7 @@ from keras.optimizers import SGD, Adagrad, Adam
 import time
 
 number_of_classes = 2
-language = 'Punjabi'
+language = 'Tamil'
 data_type = DataSetType.one_hot_encoding_character
 
 
