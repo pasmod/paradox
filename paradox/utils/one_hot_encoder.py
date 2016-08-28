@@ -12,4 +12,4 @@ def get_one_hot_encoding(X, vocabulary, tokenizer=None, analyzer='word', concat_
     if concat_vectors:
         return np.concatenate((encodings_sentences_A, encodings_sentences_B), axis=1)
     else:
-        return [encodings_sentences_A, encodings_sentences_B]
+        return [np.array(encodings_sentences_A), np.array(encodings_sentences_B)]
