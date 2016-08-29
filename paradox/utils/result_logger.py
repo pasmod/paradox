@@ -9,9 +9,10 @@ class ResultLogger():
         self.logger.addHandler(handler)
         self.logger.setLevel(logging.DEBUG)
 
-    def log_result(self, localz):
+    def log_result(self, localz, message=''):
         data_type = localz['data_type'].name
-        prefix = "F1={avg_f1}, {language}-{number_of_classes}, epochs={nb_epoch}".format(**localz)
+        localz['message'] = message
+        prefix = "F1={avg_f1}, {message} {language}-{number_of_classes}, epochs={nb_epoch}".format(**localz)
         localz.pop('data_set')
         localz.pop('model')
         localz.pop('checkpoint')
@@ -19,4 +20,5 @@ class ResultLogger():
         localz.pop('language')
         localz.pop('number_of_classes')
         localz.pop('data_type')
+        localz.pop('message')
         self.logger.info('{},data_type={},\t{}'.format(prefix, data_type, localz))
