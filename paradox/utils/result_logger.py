@@ -16,6 +16,7 @@ class ResultLogger():
         localz.pop('data_set')
         localz.pop('model')
         localz.pop('checkpoint')
+        localz.pop('early_stop')
         localz.pop('avg_f1')
         localz.pop('language')
         localz.pop('number_of_classes')
