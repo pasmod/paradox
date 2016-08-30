@@ -30,8 +30,7 @@ def load_keras_data_set(language, number_of_classes, data_set_type, concat_vecto
     elif data_set_type == DataSetType.sequence_word:
         # ToDo: find a better way to calculate max length, for instance should max length the longest sentence in the evaluation set?
         analyzer = 'word'
-        vocabulary = get_vocabulary(test_train_split['X_train'], analyzer=analyzer, tokenizer=hindi_tokenize,
-                                    ngram_range=ngram_range)
+        vocabulary = get_vocabulary(test_train_split['X_train'], analyzer=analyzer, tokenizer=hindi_tokenize)
         vocabulary.append("<PAD/>")
         vocabulary.append("<UNK/>")
         x_train_max_length = max(max(len(x1), len(x2)) for x1, x2 in test_train_split['X_train'])
