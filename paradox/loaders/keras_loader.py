@@ -30,18 +30,17 @@ def load_keras_data_set(language, number_of_classes, data_set_type, concat_vecto
     elif data_set_type == DataSetType.sequence_word:
         # ToDo: find a better way to calculate max length, for instance should max length the longest sentence in the evaluation set?
         analyzer = 'word'
-        vocabulary = get_vocabulary(test_train_split['X_train'], analyzer=analyzer, tokenizer=hindi_tokenize, ngram_range=ngram_range)
+        vocabulary = get_vocabulary(test_train_split['X_train'], analyzer=analyzer, tokenizer=hindi_tokenize,
+                                    ngram_range=ngram_range)
         vocabulary.append("<PAD/>")
         vocabulary.append("<UNK/>")
         x_train_max_length = max(max(len(x1), len(x2)) for x1, x2 in test_train_split['X_train'])
         x_test_max_length = max(max(len(x1), len(x2)) for x1, x2 in test_train_split['X_test'])
         max_length = max(x_train_max_length, x_test_max_length)
         max_length = 30
-        X_train = encode_sequence(test_train_split['X_train'], max_length, vocabulary)
-        print X_train.shape
-        X_test = encode_sequence(test_train_split['X_test'], max_length, vocabulary)
-        print X_test.shape
-
+        X_train = encode_sequence(test_train_split['X_train'], max_length, vocabulary, concat_vectors=concat_vectors)
+        # print X_train.shape
+        X_test = encode_sequence(test_train_split['X_test'], max_length, vocabulary, concat_vectors=concat_vectors)
     return {'X_train': X_train,
             'X_test': X_test,
             'y_train': to_categorical(np.array(test_train_split['y_train']), number_of_classes),

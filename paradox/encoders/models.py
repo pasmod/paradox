@@ -60,14 +60,32 @@ def simple_merge_approach(length_input_layer, number_of_classes):
 def lstm_approach(vocabulary_size, sequence_length, number_of_classes):
     model = Sequential()
     len_output_dim = 128
-    max_len = 210
-    model.add(Embedding(input_dim=vocabulary_size, output_dim=len_output_dim, input_length=sequence_length, dropout=0.2))
+    model.add(
+        Embedding(input_dim=vocabulary_size, output_dim=len_output_dim, input_length=sequence_length, dropout=0.2))
     model.add(LSTM(128, dropout_W=0.2, dropout_U=0.2))
     # model.add(Convolution1D(64, 1, border_mode='same', input_shape=(1, length_input_layer)))
     # model.add(LSTM(128, input_shape=(40, length_input_layer)))
     # model.add(LSTM(128, input_dim=length_input_layer))
     model.add(Dense(64))
     model.add(Dense(30))
+    model.add(Dense(number_of_classes))
+    model.add(Activation('softmax'))
+    return model
+
+
+def lstm_branch_approach(vocabulary_size, sequence_length, number_of_classes):
+    len_output_dim = 200
+    left_branch = Sequential()
+    left_branch.add(
+        Embedding(input_dim=vocabulary_size, output_dim=len_output_dim, input_length=sequence_length, dropout=0.2))
+    right_branch = Sequential()
+    right_branch.add(
+        Embedding(input_dim=vocabulary_size, output_dim=len_output_dim, input_length=sequence_length, dropout=0.2))
+    merged = Merge([left_branch, right_branch], mode='concat')
+    model = Sequential()
+    model.add(merged)
+    model.add(LSTM(128, dropout_W=0.2, dropout_U=0.2, return_sequences=True))
+    model.add(LSTM(64, dropout_U=0.2, dropout_W=0.2))
     model.add(Dense(number_of_classes))
     model.add(Activation('softmax'))
     return model
