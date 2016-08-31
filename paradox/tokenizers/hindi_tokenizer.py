@@ -131,10 +131,10 @@ class Tokenizer():
 
         return freq
 
-    # def print_freq_dict(self, freq):
+        # def print_freq_dict(self, freq):
         # '''done'''
         # for i in freq.keys():
-            # print i.encode('utf-8'), ',', freq[i]
+        # print i.encode('utf-8'), ',', freq[i]
 
     def generate_stem_words(self, word):
         suffixes = {
