@@ -28,6 +28,7 @@ Number of training instances per classes in the training corpora
     <li>Baseline CountVectorizer with character analyzer, shared vocabulary</li>
     <li>run_lstm_branch_approach (trim 30 words per sentence), 10 epochs, batch_size 2, dropout=0.2</li>
     <li>run_lstm_branch_approach (trim 30 words per sentence), 20 epochs, batch_size 32, dropout=0.35</li>
+    <li>run_lstm_branch_approach (trim 60 words per sentence), 20 epochs, batch_size 32, dropout=0.2</li>
 <ol>
 
 | Method    | Malayalam T1 | Malayalam T2 | Punjabi T1 | Punjabi T2 | Hindi T1 | Hindi T2 | Tamil T1 | Tamil T2 |
@@ -40,4 +41,5 @@ Number of training instances per classes in the training corpora
 | f) |  0.741  |  0.721 | 0.815 | 0.768 | 0.724 | 0.663 | 0.840 | 0.700 |
 | g) |  0.636  |  0.589 | 0.487 | 0.376 | 0.480 | 0.484 | 0.805 | 0.604 |
 | h) |  0.648  |  0.649 | 0.199 | 0.302 | 0.241 | 0.489 | 0.796 | 0.532 |
+| i) |  0.378  |  0.248 | 0.369 | 0.212 | 0.378 | 0.196 | 0.378 | 0.196 |
 
