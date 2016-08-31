@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-from tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
+from paradox.tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
 
 
 def encode_sequence(X, max_length, vocabulary, tokenizer=hindi_tokenize, concat_vectors=True):
