@@ -33,10 +33,10 @@ class Tokenizer():
     def print_sentences(self, sentences=None):
         if sentences:
             for i in sentences:
-                print i.encode('utf-8')
+                print(i.encode('utf-8'))
         else:
             for i in self.sentences:
-                print i.encode('utf-8')
+                print(i.encode('utf-8'))
 
     def clean_text(self):
         '''not working'''
@@ -57,7 +57,7 @@ class Tokenizer():
 
     def remove_only_space_words(self):
 
-        tokens = filter(lambda tok: tok.strip(), self.tokens)
+        tokens = list(filter(lambda tok: tok.strip(), self.tokens))
         self.tokens = tokens
 
     def hyphenated_tokens(self):
@@ -89,10 +89,10 @@ class Tokenizer():
         '''done'''
         if print_list is None:
             for i in self.tokens:
-                print i.encode('utf-8')
+                print(i.encode('utf-8'))
         else:
             for i in print_list:
-                print i.encode('utf-8')
+                print(i.encode('utf-8'))
 
     def tokens_count(self):
         '''done'''
@@ -131,10 +131,10 @@ class Tokenizer():
 
         return freq
 
-    def print_freq_dict(self, freq):
-        '''done'''
-        for i in freq.keys():
-            print i.encode('utf-8'), ',', freq[i]
+    # def print_freq_dict(self, freq):
+        # '''done'''
+        # for i in freq.keys():
+            # print i.encode('utf-8'), ',', freq[i]
 
     def generate_stem_words(self, word):
         suffixes = {
@@ -209,4 +209,4 @@ if __name__ == "__main__":
     # 	print i.encode('utf-8'),f[i].encode('utf-8')
     z = t.remove_stop_words()
     t.print_tokens(t.final_tokens)
-    print t.sentence_count(), t.tokens_count(), t.len_text()
+    # print t.sentence_count(), t.tokens_count(), t.len_text()

@@ -1,4 +1,4 @@
-from tokenizers.hindi_tokenizer import Tokenizer
+from paradox.tokenizers.hindi_tokenizer import Tokenizer
 
 
 def hindi_tokenize(s):

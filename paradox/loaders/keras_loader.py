@@ -6,7 +6,7 @@ from keras.utils.np_utils import to_categorical
 from enum import Enum
 import numpy as np
 from paradox.utils.sequence_encoder import encode_sequence, pad
-from tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
+from paradox.tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
 
 
 def load_keras_data_set(language, number_of_classes, data_set_type, concat_vectors, ngram_range=(1, 1)):
