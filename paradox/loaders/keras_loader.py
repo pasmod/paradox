@@ -1,4 +1,4 @@
-from paradox.corpus_loader import load_all_languages
+from paradox.loaders.corpus_loader import load_all_languages
 from paradox.evaluation.training_test_split import split_training_data
 from paradox.utils.vocabulary_extractor import get_vocabulary
 from paradox.utils.one_hot_encoder import get_one_hot_encoding
