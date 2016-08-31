@@ -115,7 +115,8 @@ def run_lstm_branch_approach(number_of_classes=number_of_classes, language=langu
     data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=False,
                                    ngram_range=ngram_range)
     length_input_layer = len(data_set['vocabulary'])
-    batch_size = len(data_set['X_train'])
+    # batch_size = len(data_set['X_train'])
+    batch_size = 32
     model = models.lstm_branch_approach(vocabulary_size=len(data_set['vocabulary']),
                                  sequence_length=data_set['max_length'],
                                  number_of_classes=number_of_classes)
@@ -136,15 +137,17 @@ def run_lstm_branch_approach(number_of_classes=number_of_classes, language=langu
     return model
 
 # model = run_simple_model()
-model = run_lstm_branch_approach(nb_epoch=10)
+# model = run_lstm_branch_approach(nb_epoch=10)
 # model = run_simple_merge_approach(nb_epoch=10)
-model.save('/var/www/trained_models/temp/{}.model'.format(time.strftime("%Y%m%d_%H%M%S")))
-# model = run_simple_model(language='Tamil', number_of_classes=2)
-# model = run_simple_model(language='Tamil', number_of_classes=3)
-# model = run_simple_model(language='Malayalam', number_of_classes=2)
-# model = run_simple_model(language='Malayalam', number_of_classes=3)
-# model = run_simple_model(language='Punjabi', number_of_classes=2)
-# model = run_simple_model(language='Punjabi', number_of_classes=3)
-# model = run_simple_model(language='Hindi', number_of_classes=2)
+# model.save('/var/www/trained_models/temp/{}.model'.format(time.strftime("%Y%m%d_%H%M%S")))
+
+model = run_lstm_branch_approach(language='Malayalam', number_of_classes=2, nb_epoch=20)
+model = run_lstm_branch_approach(language='Malayalam', number_of_classes=3, nb_epoch=20)
+model = run_lstm_branch_approach(language='Punjabi', number_of_classes=2, nb_epoch=20)
+model = run_lstm_branch_approach(language='Punjabi', number_of_classes=3, nb_epoch=20)
+model = run_lstm_branch_approach(language='Hindi', number_of_classes=2, nb_epoch=20)
+model = run_lstm_branch_approach(language='Hindi', number_of_classes=3, nb_epoch=20)
+model = run_lstm_branch_approach(language='Tamil', number_of_classes=2, nb_epoch=20)
+model = run_lstm_branch_approach(language='Tamil', number_of_classes=3, nb_epoch=20)
 # model = run_deep_dense_model()
-# model = run_simple_model(language='Hindi', number_of_classes=3)
+
