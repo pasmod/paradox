@@ -2,9 +2,9 @@ import logging
 
 
 class ResultLogger():
-    def __init__(self):
+    def __init__(self, path='/var/www/logs/results.log'):
         self.logger = logging.getLogger('result_logger')
-        handler = logging.FileHandler('/var/www/logs/results.log')
+        handler = logging.FileHandler(path)
         handler.setFormatter(logging.Formatter('%(asctime)s  %(message)s'))
         self.logger.addHandler(handler)
         self.logger.setLevel(logging.DEBUG)

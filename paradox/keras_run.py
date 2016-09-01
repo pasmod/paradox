@@ -10,7 +10,7 @@ from keras.optimizers import SGD, Adagrad, Adam
 import time
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 
-result_logger = ResultLogger()
+result_logger = ResultLogger('.' + 'results.log')
 number_of_classes = 3
 language = 'Tamil'
 data_type = DataSetType.one_hot_encoding_character
