@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 # np.random.seed(1337)
-from utils.result_logger import ResultLogger
+from loggers.result_logger import ResultLogger
 from loaders.keras_loader import load_keras_data_set
 from loaders.keras_loader import DataSetType
 from encoders import models
