@@ -2,7 +2,7 @@ from paradox.parsers.corpus_parser import parse
 
 
 def load_data_set(language, task_number):
-    return parse(path='../corpora/{}/dpil-{}-train-Task{}.xml'.format(language, language, task_number))
+    return parse(path='corpora/{}/dpil-{}-train-Task{}.xml'.format(language, language, task_number))
 
 
 def load_all_languages():
