@@ -9,11 +9,12 @@ from paradox.utils.sequence_encoder import encode_sequence, pad
 from paradox.tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
 
 
-def load_keras_data_set(language, number_of_classes, data_set_type, concat_vectors, ngram_range=(1, 1)):
+def load_keras_data_set(language, number_of_classes, data_set_type,
+                        concat_vectors, ngram_range=(1, 1), base=''):
     task = 'Task1'
     if number_of_classes == 3:
         task = 'Task2'
-    data_sets = load_all_languages()
+    data_sets = load_all_languages(base=base)
     test_train_split = split_training_data(data_sets[language][task][0], data_sets[language][task][1])
     analyzer = ''
     if data_set_type == DataSetType.one_hot_encoding_character or data_set_type == DataSetType.one_hot_encoding_word:

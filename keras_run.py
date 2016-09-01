@@ -17,9 +17,9 @@ data_type = DataSetType.one_hot_encoding_character
 
 
 def run_simple_model(number_of_classes=number_of_classes, language=language, data_type=data_type, nb_epoch=200,
-                     batch_size=128, ngram_range=(1, 1)):
+                     batch_size=128, ngram_range=(1, 1), base=''):
     data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=True,
-                                   ngram_range=ngram_range)
+                                   ngram_range=ngram_range, base=base)
     length_input_layer = len(data_set['vocabulary']) * 2
     batch_size = len(data_set['X_train'])
     model = models.simple_model(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
@@ -40,8 +40,9 @@ def run_simple_model(number_of_classes=number_of_classes, language=language, dat
 
 
 def run_deep_dense_model(number_of_classes=number_of_classes, language=language, data_type=data_type, nb_epoch=200,
-                         batch_size=128):
-    data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=True)
+                         batch_size=128, base=''):
+    data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type,
+                                   concat_vectors=True, base=base)
     length_input_layer = len(data_set['vocabulary']) * 2
     batch_size = len(data_set['X_train'])
     model = models.deep_dense_model(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
@@ -61,8 +62,9 @@ def run_deep_dense_model(number_of_classes=number_of_classes, language=language,
 
 
 def run_simple_merge_approach(number_of_classes=number_of_classes, language=language, data_type=data_type, nb_epoch=200,
-                              batch_size=128):
-    data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=False)
+                              batch_size=128, base=''):
+    data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type,
+                                   concat_vectors=False, base=base)
     length_input_layer = len(data_set['vocabulary'])
     batch_size = len(data_set['X_train'])
     model = models.simple_merge_approach(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
@@ -84,9 +86,9 @@ def run_simple_merge_approach(number_of_classes=number_of_classes, language=lang
 
 def run_lstm_approach(number_of_classes=number_of_classes, language=language, data_type=DataSetType.sequence_word,
                       nb_epoch=200,
-                      batch_size=128, ngram_range=(1, 1)):
+                      batch_size=128, ngram_range=(1, 1), base=''):
     data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=True,
-                                   ngram_range=ngram_range)
+                                   ngram_range=ngram_range, base=base)
     print('data set loaded')
     length_input_layer = len(data_set['vocabulary']) * 2
     batch_size = len(data_set['X_train'])
@@ -112,9 +114,9 @@ def run_lstm_approach(number_of_classes=number_of_classes, language=language, da
 def run_lstm_branch_approach(number_of_classes=number_of_classes, language=language,
                              data_type=DataSetType.sequence_word,
                              nb_epoch=200,
-                             batch_size=128, ngram_range=(1, 1)):
+                             batch_size=128, ngram_range=(1, 1), base=''):
     data_set = load_keras_data_set(language, number_of_classes, data_set_type=data_type, concat_vectors=False,
-                                   ngram_range=ngram_range)
+                                   ngram_range=ngram_range, base=base)
     length_input_layer = len(data_set['vocabulary'])
     # batch_size = len(data_set['X_train'])
     batch_size = 32
@@ -143,12 +145,14 @@ def run_lstm_branch_approach(number_of_classes=number_of_classes, language=langu
 # model = run_simple_merge_approach(nb_epoch=10)
 # model.save('/var/www/trained_models/temp/{}.model'.format(time.strftime("%Y%m%d_%H%M%S")))
 
-model = run_lstm_branch_approach(language='Malayalam', number_of_classes=2, nb_epoch=20)
-model = run_lstm_branch_approach(language='Malayalam', number_of_classes=3, nb_epoch=20)
-model = run_lstm_branch_approach(language='Punjabi', number_of_classes=2, nb_epoch=20)
-model = run_lstm_branch_approach(language='Punjabi', number_of_classes=3, nb_epoch=20)
-model = run_lstm_branch_approach(language='Hindi', number_of_classes=2, nb_epoch=20)
-model = run_lstm_branch_approach(language='Hindi', number_of_classes=3, nb_epoch=20)
-model = run_lstm_branch_approach(language='Tamil', number_of_classes=2, nb_epoch=20)
-model = run_lstm_branch_approach(language='Tamil', number_of_classes=3, nb_epoch=20)
+#base=''
+base='/home/pamod100/src/paradox'
+model = run_lstm_branch_approach(language='Malayalam', number_of_classes=2, nb_epoch=2, base=base)
+model = run_lstm_branch_approach(language='Malayalam', number_of_classes=3, nb_epoch=2, base=base)
+#model = run_lstm_branch_approach(language='Punjabi', number_of_classes=2, nb_epoch=20, base=base)
+#model = run_lstm_branch_approach(language='Punjabi', number_of_classes=3, nb_epoch=20, base=base)
+#model = run_lstm_branch_approach(language='Hindi', number_of_classes=2, nb_epoch=20, base=base)
+#model = run_lstm_branch_approach(language='Hindi', number_of_classes=3, nb_epoch=20, base=base)
+#model = run_lstm_branch_approach(language='Tamil', number_of_classes=2, nb_epoch=20, base=base)
+#model = run_lstm_branch_approach(language='Tamil', number_of_classes=3, nb_epoch=20, base=base)
 # model = run_deep_dense_model()
