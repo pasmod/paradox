@@ -14,6 +14,8 @@ result_logger = ResultLogger('results.log')
 number_of_classes = 3
 language = 'Tamil'
 data_type = DataSetType.one_hot_encoding_character
+base=''
+# base='/home/pamod100/src/paradox/'
 
 
 def run_simple_model(number_of_classes=number_of_classes, language=language, data_type=data_type, nb_epoch=200,
@@ -25,7 +27,7 @@ def run_simple_model(number_of_classes=number_of_classes, language=language, dat
     model = models.simple_model(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08))
-    checkpoint = ModelCheckpoint("/var/www/trained_models/temp/simple_encoder.model."
+    checkpoint = ModelCheckpoint(base+"trained_models/temp/simple_encoder.model."
                                  "{epoch:03d}-{val_acc:.4f}.hdf5",
                                  monitor='val_acc', verbose=1,
                                  save_best_only=True, mode='auto')
@@ -48,7 +50,7 @@ def run_deep_dense_model(number_of_classes=number_of_classes, language=language,
     model = models.deep_dense_model(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08))
-    checkpoint = ModelCheckpoint("/var/www/trained_models/temp/simple_encoder.model."
+    checkpoint = ModelCheckpoint(base+"trained_models/temp/simple_encoder.model."
                                  "{epoch:03d}-{val_acc:.4f}.hdf5",
                                  monitor='val_acc', verbose=1,
                                  save_best_only=True, mode='auto')
@@ -70,7 +72,7 @@ def run_simple_merge_approach(number_of_classes=number_of_classes, language=lang
     model = models.simple_merge_approach(length_input_layer=length_input_layer, number_of_classes=number_of_classes)
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08))
-    checkpoint = ModelCheckpoint("/var/www/trained_models/temp/simple_merge_approach."
+    checkpoint = ModelCheckpoint(base+"trained_models/temp/simple_merge_approach."
                                  "{epoch:03d}-{val_acc:.4f}.hdf5",
                                  monitor='val_acc', verbose=1,
                                  save_best_only=True, mode='auto')
@@ -97,7 +99,7 @@ def run_lstm_approach(number_of_classes=number_of_classes, language=language, da
                                  number_of_classes=number_of_classes)
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08))
-    checkpoint = ModelCheckpoint("/var/www/trained_models/temp/simple_encoder.model."
+    checkpoint = ModelCheckpoint(base+"trained_models/temp/simple_encoder.model."
                                  "{epoch:03d}-{val_acc:.4f}.hdf5",
                                  monitor='val_acc', verbose=1,
                                  save_best_only=True, mode='auto')
@@ -125,7 +127,7 @@ def run_lstm_branch_approach(number_of_classes=number_of_classes, language=langu
                                         number_of_classes=number_of_classes)
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08))
-    checkpoint = ModelCheckpoint("/var/www/trained_models/temp/simple_encoder.model."
+    checkpoint = ModelCheckpoint(base+"trained_models/temp/simple_encoder.model."
                                  "{epoch:03d}-{val_acc:.4f}.hdf5",
                                  monitor='val_acc', verbose=1,
                                  save_best_only=True, mode='auto')
@@ -145,8 +147,6 @@ def run_lstm_branch_approach(number_of_classes=number_of_classes, language=langu
 # model = run_simple_merge_approach(nb_epoch=10)
 # model.save('/var/www/trained_models/temp/{}.model'.format(time.strftime("%Y%m%d_%H%M%S")))
 
-#base=''
-base='/home/pamod100/src/paradox'
 model = run_lstm_branch_approach(language='Malayalam', number_of_classes=2, nb_epoch=2, base=base)
 model = run_lstm_branch_approach(language='Malayalam', number_of_classes=3, nb_epoch=2, base=base)
 #model = run_lstm_branch_approach(language='Punjabi', number_of_classes=2, nb_epoch=20, base=base)
