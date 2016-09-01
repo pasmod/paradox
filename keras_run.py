@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 # np.random.seed(1337)
-from loggers.result_logger import ResultLogger
-from loaders.keras_loader import load_keras_data_set
-from loaders.keras_loader import DataSetType
-from encoders import models
-from evaluation.metrics import evaluate_keras_predictions
+from paradox.loggers.result_logger import ResultLogger
+from paradox.loaders.keras_loader import load_keras_data_set
+from paradox.loaders.keras_loader import DataSetType
+from paradox.encoders import models
+from paradox.evaluation.metrics import evaluate_keras_predictions
 from keras.optimizers import SGD, Adagrad, Adam
 import time
 from keras.callbacks import ModelCheckpoint, EarlyStopping
