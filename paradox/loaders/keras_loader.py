@@ -15,13 +15,14 @@ def load_keras_data_set(language, number_of_classes, data_set_type,
     if number_of_classes == 3:
         task = 'Task2'
     data_sets = load_all_languages(base=base)
+    # dictionary with keys: X_train, X_test, y_train, y_test
     test_train_split = split_training_data(data_sets[language][task][0], data_sets[language][task][1])
     analyzer = ''
     if data_set_type == DataSetType.one_hot_encoding_character or data_set_type == DataSetType.one_hot_encoding_word:
         analyzer = 'char_wb'
         if data_set_type == DataSetType.one_hot_encoding_word:
             analyzer = 'word'
-        vocabulary = get_vocabulary(test_train_split['X_train'], analyzer=analyzer, ngram_range=ngram_range)
+        vocabulary = get_vocabulary(test_train_split['X_train'] + test_train_split('X_test'), analyzer=analyzer, ngram_range=ngram_range)
         X_train = get_one_hot_encoding(test_train_split['X_train'], vocabulary=vocabulary, analyzer=analyzer,
                                        concat_vectors=concat_vectors)
         X_test = get_one_hot_encoding(test_train_split['X_test'], vocabulary=vocabulary, analyzer=analyzer,
