@@ -1,9 +1,11 @@
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from paradox.tokenizers.hindi_tokenizer_wrapper import hindi_tokenize
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
 
 
-def encode_sequence(X, max_length, vocabulary, tokenizer=hindi_tokenize, concat_vectors=True):
+def _encode_sequence(X, max_length, vocabulary, tokenizer=hindi_tokenize, concat_vectors=True):
     tokenized_sentences_A = [(tokenizer(x[0])) for x in X]
     tokenized_sentences_B = [(tokenizer(x[1])) for x in X]
     encodings_sentences_A = []
@@ -22,6 +24,19 @@ def encode_sequence(X, max_length, vocabulary, tokenizer=hindi_tokenize, concat_
         return np.concatenate((encodings_sentences_A, encodings_sentences_B), axis=1)
     else:
         return [encodings_sentences_A, encodings_sentences_B]
+
+
+def encode_sequence(X, max_length, vocabulary, tokenizer=hindi_tokenize, concat_vectors=True):
+    t = Tokenizer()
+    sentences_A = [x[0].encode("utf-8") for x in X]
+    sentences_B = [x[1].encode("utf-8") for x in X]
+    t.fit_on_texts(sentences_A + sentences_B)
+    sequences_A = pad_sequences(t.texts_to_sequences(sentences_A), maxlen=max_length)
+    sequences_B = pad_sequences(t.texts_to_sequences(sentences_B), maxlen=max_length)
+    if concat_vectors:
+        return np.concatenate((sequences_A, sequences_B), axis=1)
+    else:
+        return [sequences_A, sequences_B]
 
 
 def pad(X, max_length, padding_word="<PAD/>"):
