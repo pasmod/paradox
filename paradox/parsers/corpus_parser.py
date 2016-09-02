@@ -3,7 +3,7 @@ import logging
 
 
 def parse(path=None):
-    map_class_numeric = {'P': 0, 'NP': 1, 'SP': 2}  # Needed for keras
+    map_class_numeric = {'P': 0, 'NP': 1, 'SP': 2, 'XX': 3}  # Needed for keras
     e = xml.etree.ElementTree.parse(path).getroot()
     logging.info('parsing data set: name={}, version={}'.format(e.get('name'), e.get('version')))
     corpus = e.findall('Corpus')[0]
