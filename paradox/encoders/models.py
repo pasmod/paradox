@@ -74,18 +74,18 @@ def lstm_approach(vocabulary_size, sequence_length, number_of_classes):
 
 
 def lstm_branch_approach(vocabulary_size, sequence_length, number_of_classes):
-    len_output_dim = 200
     left_branch = Sequential()
-    left_branch.add(
-        Embedding(input_dim=vocabulary_size, output_dim=len_output_dim, input_length=sequence_length))
+    left_branch.add(LSTM(64, input_shape=(sequence_length, vocabulary_size),
+                         return_sequences=True))
     right_branch = Sequential()
-    right_branch.add(
-        Embedding(input_dim=vocabulary_size, output_dim=len_output_dim, input_length=sequence_length))
+    right_branch.add(LSTM(64, input_shape=(sequence_length, vocabulary_size),
+                          return_sequences=True))
     merged = Merge([left_branch, right_branch], mode='concat')
     model = Sequential()
     model.add(merged)
-    model.add(LSTM(128, dropout_W=0.8, return_sequences=True))
-    model.add(LSTM(64, dropout_W=0.8))
+    model.add(LSTM(64, dropout_W=0.8, return_sequences=True))
+    model.add(LSTM(32, dropout_W=0.8))
+    model.add(Dense(32))
     model.add(Dense(number_of_classes))
     model.add(Activation('softmax'))
     return model

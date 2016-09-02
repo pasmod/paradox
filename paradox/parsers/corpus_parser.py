@@ -17,9 +17,9 @@ def parse(path=None, reverse=True):
         sentence2 = p.find("Sentence2").text
         clazz = p.find("Class").text
         X.append((sentence1, sentence2))
-        X.append((sentence2, sentence1))
+        # X.append((sentence2, sentence1))
         # y.append(clazz)
-        y.append(map_class_numeric[clazz])
+        # y.append(map_class_numeric[clazz])
         y.append(map_class_numeric[clazz])
         logging.debug('parsed pair with id: {}'.format(p_id))
     logging.info('parsed {} pairs of sentences'.format(len(paraphrases)))
