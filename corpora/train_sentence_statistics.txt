@@ -1,0 +1,48 @@
+Malayalam - Task1
+Sentence 1: mean: 9.2712 25% q: 7.0 75% q: 11.0 max: 32 min: 3
+Sentence 2: mean: 9.0472 25% q: 6.0 75% q: 11.0 max: 24 min: 3
+Malayalam - Task2
+Sentence 1: mean: 9.43685714286 25% q: 7.0 75% q: 12.0 max: 34 min: 3
+Sentence 2: mean: 8.458 25% q: 6.0 75% q: 10.0 max: 25 min: 3
+Punjabi - Task1
+Sentence 1: mean: 19.3105882353 25% q: 11.0 75% q: 26.0 max: 54 min: 4
+Sentence 2: mean: 19.3535294118 25% q: 12.0 75% q: 25.0 max: 56 min: 4
+Punjabi - Task2
+Sentence 1: mean: 20.82 25% q: 12.0 75% q: 27.0 max: 56 min: 4
+Sentence 2: mean: 19.5040909091 25% q: 12.0 75% q: 25.0 max: 56 min: 4
+Tamil - Task1
+Sentence 1: mean: 10.9748 25% q: 8.0 75% q: 13.0 max: 34 min: 2
+Sentence 2: mean: 11.9412 25% q: 9.0 75% q: 15.0 max: 31 min: 2
+Tamil - Task2
+Sentence 1: mean: 11.4008571429 25% q: 8.0 75% q: 14.0 max: 35 min: 2
+Sentence 2: mean: 11.6645714286 25% q: 8.0 75% q: 14.0 max: 31 min: 2
+Hindi - Task1
+Sentence 1: mean: 16.0952 25% q: 11.0 75% q: 20.0 max: 47 min: 3
+Sentence 2: mean: 16.4488 25% q: 11.0 75% q: 21.0 max: 55 min: 4
+Hindi - Task2
+Sentence 1: mean: 17.7248571429 25% q: 12.0 75% q: 22.0 max: 67 min: 3
+Sentence 2: mean: 16.4805714286 25% q: 11.0 75% q: 21.0 max: 55 min: 4
+
+
+
+def print_stats(X, language, task):
+    sentences_A = [(x[0]) for x in X]
+    A1, B1, C1, D1, E1 = calculate_stats(sentences_A)
+    sentences_B = [(x[1]) for x in X]
+    A2, B2, C2, D2, E2 = calculate_stats(sentences_B)
+    print("{} - Task{}".format(language, task))
+    print("Sentence 1: {} {} {} {} {}".format(A1, B1, C1, D1, E1))
+    print("Sentence 2: {} {} {} {} {}".format(A2, B2, C2, D2, E2))
+
+
+def calculate_stats(sentences):
+    lengths = []
+    for sentence in sentences:
+        #print(sentence[0].encode('utf-8'))
+        lengths.append(len(hindi_tokenize(sentence)))
+    A = "mean: " + str(np.mean(lengths))
+    D = "max: " + str(np.max(lengths))
+    E = "min: " + str(np.min(lengths))
+    B = "25% q: " + str(np.percentile(lengths, 25))
+    C = "75% q: " + str(np.percentile(lengths, 75))
+    return A, B, C, D, E
