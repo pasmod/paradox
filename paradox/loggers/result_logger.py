@@ -20,6 +20,5 @@ class ResultLogger():
         localz.pop('avg_f1')
         localz.pop('language')
         localz.pop('number_of_classes')
-        localz.pop('data_type')
         localz.pop('message')
         self.logger.info('{},data_type={},\t{}'.format(prefix, data_type, localz))
