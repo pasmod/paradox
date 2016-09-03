@@ -31,8 +31,11 @@ def load_keras_train_data_set(language, number_of_classes, max_length):
             'max_length': max_length}
 
 
-class DataSetType(Enum):
-    one_hot_encoding_word = 1
-    one_hot_encoding_character = 2
-    sequence_character = 3
-    sequence_word = 4
+def load_keras_test_data_set(language, number_of_classes, vocab, max_length):
+    task = 'Task1'
+    if number_of_classes == 3:
+        task = 'Task2'
+    X, y, P = load_all_languages(corpus_type='test')[language][task]
+    X = encode_sequence(X, max_length, vocab)
+    return {'X': X,
+            'P': P}
