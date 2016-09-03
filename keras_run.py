@@ -28,10 +28,11 @@ def run_lstm_branch_approach(number_of_classes=None, language=None,
     model = models.lstm_branch_approach(vocabulary_size=len(data_set['vocabulary']),
                                         sequence_length=data_set['max_length'],
                                         number_of_classes=number_of_classes)
+    logging.info("starting compile")
     model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
                   optimizer='adadelta')
     logging.info("finished compile")
-    checkpoint = ModelCheckpoint(base+"trained_models/temp/weights.best.{}.Task{}.hdf5".format(language,
+    checkpoint = ModelCheckpoint("trained_models/temp/weights.best.{}.Task{}.hdf5".format(language,
                                                                                                number_of_classes-1),
                                  monitor='val_acc', verbose=1,
                                  save_best_only=True, mode='auto')
