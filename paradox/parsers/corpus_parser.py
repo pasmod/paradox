@@ -10,9 +10,10 @@ def parse(path=None, reverse=True):
     language = corpus.findall('Language')
     logging.info("detected language: {}".format(corpus.find('Language').text))
     paraphrases = corpus.findall('Paraphrase')
-    X, y = [], []
+    X, y, P = [], [], []
     for p in paraphrases:
         p_id = p.get("pID")
+        P.append(p_id)
         sentence1 = p.find("Sentence1").text
         sentence2 = p.find("Sentence2").text
         clazz = p.find("Class").text
@@ -23,4 +24,4 @@ def parse(path=None, reverse=True):
         y.append(map_class_numeric[clazz])
         logging.debug('parsed pair with id: {}'.format(p_id))
     logging.info('parsed {} pairs of sentences'.format(len(paraphrases)))
-    return X, y
+    return X, y, P
