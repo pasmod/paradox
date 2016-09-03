@@ -5,9 +5,8 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 
 
-def encode_sequence(X, max_length, vocabulary, concat_vectors=True):
+def encode_sequence(X, max_length, vocabulary):
     t = Tokenizer()
-    vectorizer = CountVectorizer(analyzer='word', vocabulary=vocabulary, binary=True)
     sentences_A = [x[0] for x in X]
     sentences_B = [x[1] for x in X]
     #sentences_A = [x[0].encode("utf-8") for x in X]
@@ -26,11 +25,7 @@ def encode_sequence(X, max_length, vocabulary, concat_vectors=True):
     for i, sentence in enumerate(padded_B):
         for t, word in enumerate(sentence):
             X_train_B[i, t, vocabulary.get(word, vocabulary.get('<UNK/>'))] = 1
-
-    if concat_vectors:
-        return np.concatenate((X_train_A, X_train_B), axis=1)
-    else:
-        return [X_train_A, X_train_B]
+    return [X_train_A, X_train_B]
 
 
 def pad(X, max_length, padding_word="<PAD/>"):
