@@ -7,9 +7,9 @@ def load_data_set(language, task_number, corpus_type=None):
         corpus = 'corpora/{}/dpil-{}-train-Task{}.xml'
     else:
         corpus = 'corpora/{}/Test{}_Task{}.xml'
-    path = os.path.join(base, corpus.format(language,
-                                            language,
-                                            task_number))
+    path = corpus.format(language,
+                         language,
+                         task_number)
     return parse(path)
 
 

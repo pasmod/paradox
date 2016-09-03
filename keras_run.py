@@ -11,16 +11,10 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping
 import logging
 
 result_logger = ResultLogger('results.log')
-number_of_classes = 3
-language = 'Tamil'
-data_type = DataSetType.one_hot_encoding_character
-base=''
 
 
-def run_lstm_branch_approach(number_of_classes=number_of_classes, language=language,
-                             data_type=DataSetType.sequence_word,
-                             nb_epoch=200,
-                             batch_size=128, ngram_range=(1, 1), max_length=20):
+def run_lstm_branch_approach(number_of_classes=None, language=None,
+                             nb_epoch=200, batch_size=128, max_length=20):
     logging.info("started loading")
     data_set = load_keras_train_data_set(language, number_of_classes,  max_length=max_length)
     logging.info("Loaded datasets")

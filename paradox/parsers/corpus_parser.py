@@ -5,10 +5,10 @@ import logging
 def parse(path=None, reverse=True):
     map_class_numeric = {'P': 0, 'NP': 1, 'SP': 2, 'XX': 3}  # Needed for keras
     e = xml.etree.ElementTree.parse(path).getroot()
-    logging.info('parsing data set: name={}, version={}'.format(e.get('name'), e.get('version')))
+    logging.debug('parsing data set: name={}, version={}'.format(e.get('name'), e.get('version')))
     corpus = e.findall('Corpus')[0]
     language = corpus.findall('Language')
-    logging.info("detected language: {}".format(corpus.find('Language').text))
+    logging.debug("detected language: {}".format(corpus.find('Language').text))
     paraphrases = corpus.findall('Paraphrase')
     X, y, P = [], [], []
     for p in paraphrases:
@@ -23,5 +23,5 @@ def parse(path=None, reverse=True):
         # y.append(map_class_numeric[clazz])
         y.append(map_class_numeric[clazz])
         logging.debug('parsed pair with id: {}'.format(p_id))
-    logging.info('parsed {} pairs of sentences'.format(len(paraphrases)))
+    logging.debug('parsed {} pairs of sentences'.format(len(paraphrases)))
     return X, y, P
