@@ -75,29 +75,3 @@ def _construct_pairs(sentences):
             print(len(sentences[i].split(" ")))
             print(len(sentences[i+1].split(" ")))
     return pairs
-
-
-def __construct_pairs(sentences):
-    pairs = []
-    if len(sentences) <= 2:
-        return pairs
-    for i in range(0, 2 - 1):
-        sentence_i = sentences[i].split(" ")
-        sentence_ii = sentences[i+1].split(" ")
-        if len(sentence_i) > 5 and len(sentence_i) < 60 and\
-           len(sentence_ii) > 5 and len(sentence_ii) < 60 and\
-           len(sentences[-1].split(" ")) > 5 and\
-           len(sentences[-1].split(" ")) < 60:
-            pairs.append({"sentences":
-                          [sentences[i], sentences[i+1]],
-                          "label": True})
-            pairs.append({"sentences":
-                          [sentences[i+1], sentences[i]],
-                          "label": False})
-            pairs.append({"sentences":
-                          [sentences[0], sentences[-1]],
-                          "label": 'MC'})
-        else:
-            print(len(sentences[i].split(" ")))
-            print(len(sentences[i+1].split(" ")))
-    return pairs
