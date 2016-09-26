@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from ..utils.utils import sentence_tokenizer
+from random import shuffle
 import logging
 import io
 import json
@@ -7,7 +8,7 @@ import os
 
 
 def construct(src='corpus/de/docs', dest='corpus/de/pairs', lang='de'):
-    """Used the JSON documents in src and create a
+    """Uses the JSON documents in src and create a
     corpus of sentence pairs in dest.
 
     # Arguments
@@ -49,29 +50,42 @@ def _write_json(dictionary, dest):
 def _transform(news, tokenizer):
     body = news["body"]
     sentences = tokenizer.tokenize(body)
+    headline = news["headline"]
     news_t = OrderedDict({"id": news["id"],
                           "lang": news["lang"],
                           "url": news["url"] or news["wayback_url"]})
-    news_t['pairs'] = _construct_pairs(sentences)
+    news_t['pairs'] = _construct_pairs(sentences, headline)
     return news_t
 
 
-def _construct_pairs(sentences):
+def _construct_pairs(sentences, headline):
+    min_num_sentences = 10
     pairs = []
-    if len(sentences) <= 2:
-        return pairs
-    for i in range(0, 2 - 1):
-        sentence_i = sentences[i].split(" ")
-        sentence_ii = sentences[i+1].split(" ")
-        if len(sentence_i) > 5 and len(sentence_i) < 60 and\
-           len(sentence_ii) > 5 and len(sentence_ii) < 60:
-            pairs.append({"sentences":
-                          [sentences[i], sentences[i+1]],
-                          "label": True})
-            pairs.append({"sentences":
-                          [sentences[i+1], sentences[i]],
-                          "label": False})
-        else:
-            print(len(sentences[i].split(" ")))
-            print(len(sentences[i+1].split(" ")))
+    if sentences and len(sentences) >= min_num_sentences:
+        first_sentence = sentences[0]
+        pairs.append({"sentences":
+                      [first_sentence, headline],
+                      "label": True})
+        pairs.append({"sentences":
+                      [headline, first_sentence],
+                      "label": True})
+        pairs.append({"sentences":
+                      [first_sentence, first_sentence],
+                      "label": True})
+        pairs.append({"sentences":
+                      [headline, headline],
+                      "label": True})
+        shuffle(sentences)
+        pairs.append({"sentences":
+                      [sentences[0], sentences[1]],
+                      "label": False})
+        pairs.append({"sentences":
+                      [sentences[1], sentences[0]],
+                      "label": False})
+        pairs.append({"sentences":
+                      [sentences[2], sentences[3]],
+                      "label": False})
+        pairs.append({"sentences":
+                      [sentences[3], sentences[2]],
+                      "label": False})
     return pairs
