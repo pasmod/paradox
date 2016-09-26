@@ -31,7 +31,7 @@ def word2vec_embedding_layer(embeddings_path):
     return np.load(open(embeddings_path, 'rb'))
 
 
-def load(lang='en', n=1000, test_size=0.2):
+def load(lang=None, n=1000, test_size=0.2):
     """Loads n instances of the corpus in a form
     suitable to be used by keras models.
 
@@ -73,9 +73,6 @@ def encode_labels(Y):
     encoder = LabelEncoder()
     encoder.fit(Y)
     encoded_Y = encoder.transform(Y)
-    print encoder.classes_
-    print encoder.transform(encoder.classes_)
-    print np_utils.to_categorical(encoder.transform(encoder.classes_))
     return np_utils.to_categorical(encoded_Y)
     return encoded_Y
 
