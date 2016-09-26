@@ -3,7 +3,7 @@ import json
 import os
 
 
-def parse(lang='de'):
+def parse(lang=None):
     """Parses the pairs corpus stored in path
     as a generator.
 
