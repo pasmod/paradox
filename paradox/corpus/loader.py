@@ -3,7 +3,7 @@ from sklearn.cross_validation import train_test_split
 from collections import Counter
 import numpy as np
 from keras.utils import np_utils
-from parser import parse
+from .parser import parse
 import logging
 import itertools
 
