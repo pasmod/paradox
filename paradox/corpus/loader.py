@@ -12,7 +12,7 @@ def word2vec(word_index):
     import os
     import numpy as np
     embeddings_index = {}
-    f = open(os.path.join("embeddings", 'glove.6B.200d.txt'))
+    f = open(os.path.join("/home/pamod100/src/paradox/embeddings", 'glove.6B.200d.txt'))
     for line in f:
         values = line.split()
         word = values[0]
@@ -48,7 +48,8 @@ def load(lang=None, n=1000, test_size=0.2):
     embeddings = None
     weights = None
     embeddings = word2vec(vocab)
-    weights = word2vec_embedding_layer('embeddings/word2vec_wiki-de_200_binary.syn0.npy')
+    #weights = word2vec_embedding_layer('embeddings/word2vec_wiki-de_200_binary.syn0.npy')
+    weights = None
     x, y = build_input_data(padded_X, Y, vocab)
     X_train, X_test, y_train, y_test = train_test_split(x, y,
                                                         test_size=test_size,

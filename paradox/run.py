@@ -6,17 +6,20 @@ np.set_printoptions(threshold=np.inf)
 
 
 (X_train_1, X_train_2, y_train), (X_test_1, X_test_2, y_test), vocab, embeddings, weights = loader.load(n=21000, lang='en')  # noqa
+print("Loaded data")
 
 max_len = len(X_train_1[0])
+print(weights)
 
 
-def run_lstm_encoder(nb_epoch=100, batch_size=64, encoding_dim=64, depth=3,
+def run_lstm_encoder(nb_epoch=None, batch_size=None, encoding_dim=64, depth=3,
                      activation='relu', embeddings=None, weights=None,
-                     lang='en'):
+                     lang=None):
     model = models.lstm_encoder(encoding_dim=encoding_dim,
                                 depth=depth, activation=activation,
                                 max_len=max_len, vocab=vocab,
-                                embeddings=embeddings, weights=weights)
+                                embeddings=embeddings, weights=weights, lang=lang)
+    print("Model constructed")
     checkpoint = ModelCheckpoint("lstm_encoder.model."
                                  "{epoch:03d}-{val_acc:.4f}.hdf5",
                                  monitor='val_acc', verbose=1,
@@ -84,5 +87,5 @@ def evaluate_keras_predictions(y_true, y_pred):
 # run_deep_encoder(depth=10)
 for i in range(0, 10):
     print("Iteration {}".format(i))
-    run_lstm_encoder(nb_epoch=15, batch_size=64, embeddings=embeddings,
+    run_lstm_encoder(nb_epoch=15, batch_size=1, embeddings=embeddings,
                      lang='en', weights=weights)

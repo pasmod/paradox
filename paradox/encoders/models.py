@@ -6,7 +6,8 @@ from keras.layers import Merge
 
 def lstm_encoder(encoding_dim=32, depth=3, activation='relu',
                  max_len=None, max_features=None, embeddings=None,
-                 vocab=None, lang='en', weights=None):
+                 vocab=None, lang=None, weights=None):
+    print(lang)
     left_branch = Sequential()
     if lang == 'en':
         left_branch.add(Embedding(len(vocab) + 1, 200, input_length=max_len,

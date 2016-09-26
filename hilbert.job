@@ -22,7 +22,7 @@
 #PBS -M p.modaresi@gmx.de
 
 # Manage resources
-#PBS -l select=1:mem=20gb:ngpus=1
+#PBS -l select=1:mem=40gb:ncpus=12
 
 #PBS -A AGENT
 
