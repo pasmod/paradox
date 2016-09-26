@@ -35,13 +35,13 @@ def calculate_and_print_metrics(y_true, y_pred):
     from sklearn.metrics import accuracy_score
     from pandas_confusion import ConfusionMatrix
     accuracy = accuracy_score(y_true, y_pred)
-    print "*** Results ***" + '*' * 5
-    print "Accuracy:" + str(accuracy)
+    print("*** Results ***" + '*' * 5)
+    print("Accuracy:" + str(accuracy))
     f1 = f1_score(y_true, y_pred, average=None)
-    print "Macro F1:" + str(f1)
+    print("Macro F1:" + str(f1))
     avg_f1 = str(np.mean(f1))
-    print "Average F1:" + avg_f1
-    print "Confusion matrix"
+    print("Average F1:" + avg_f1)
+    print("Confusion matrix")
     print(ConfusionMatrix(y_true, y_pred))
     return avg_f1
 
@@ -83,6 +83,6 @@ def evaluate_keras_predictions(y_true, y_pred):
 # run_simple_encoder(activation='softmax', batch_size=64, nb_epoch=20)
 # run_deep_encoder(depth=10)
 for i in range(0, 10):
-    print "Iteration {}".format(i)
+    print("Iteration {}".format(i))
     run_lstm_encoder(nb_epoch=15, batch_size=64, embeddings=embeddings,
                      lang='en', weights=weights)
