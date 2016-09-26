@@ -84,5 +84,5 @@ def evaluate_keras_predictions(y_true, y_pred):
 # run_deep_encoder(depth=10)
 for i in range(0, 10):
     print "Iteration {}".format(i)
-    run_lstm_encoder(nb_epoch=15, batch_size=128, embeddings=embeddings,
+    run_lstm_encoder(nb_epoch=15, batch_size=64, embeddings=embeddings,
                      lang='en', weights=weights)
