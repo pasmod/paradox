@@ -8,3 +8,4 @@ trained_models/temp/*.hdf5
 logs/results.log
 results.log
 corpus/
+embeddings/
