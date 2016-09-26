@@ -53,5 +53,5 @@ export PYTHONPATH=$PYTHONPATH:/software/python/2.7.5/login/bin/python
 
 
 ###### EXECUTION ######
-
+theano-cache clear
 python /home/pamod100/src/paradox/paradox/run.py
