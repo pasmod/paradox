@@ -1,33 +1,16 @@
 import logging
-import json
-import os
 
 
-def parse(lang=None):
-    """Parses the pairs corpus stored in path
-    as a generator.
-
-    # Arguments
-        lang: currently de or en
-
-    # Yields:
-        (s1, s2, label)
-    """
-    if lang == 'de':
-        path = 'corpus/de/pairs'
-    elif lang == 'en':
-        path = 'corpus/en/pairs'
-    else:
-        raise ValueError("Language {} is not supported.".format(lang))
-    logging.info("Parsing corpus: {}".format(path))
-    for root, dirs, files in os.walk(path):
-        for f in files:
-            filename = os.path.join(path, f)
-            with open(filename) as data_file:
-                pairs = json.load(data_file)["pairs"]
-                logging.info("Parsed {} sentence pairs".format(
-                    len(pairs)))
-                for pair in pairs:
-                    yield (pair["sentences"][0],
-                           pair["sentences"][1],
-                           pair["label"])
+def parse(rawfile_path=None, gsfile_path=None):
+    logging.info("Parsing file: {}".format(rawfile_path))
+    pairs = []
+    with open(rawfile_path) as raw_file:
+        raw_lines = raw_file.readlines()
+        with open(gsfile_path) as gs_file:
+            gs_lines = gs_file.readlines()
+            for raw_line, gs_line in zip(raw_lines, gs_lines):
+                if gs_line.replace("\n", "").isdigit():
+                    gs = float(gs_line.replace("\n", ""))
+                    split = raw_line.split("\t")
+                    pairs.append((split[0], split[1], gs))
+    return pairs
