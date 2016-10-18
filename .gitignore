@@ -1,11 +1,4 @@
 *.pyc
-.idea/
 .cache/
 paradox/test.py
-trained_models/temp/*.npy
-trained_models/temp/*.txt
-trained_models/temp/*.hdf5
-logs/results.log
-results.log
-corpus/
 embeddings/
