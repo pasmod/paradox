@@ -12,7 +12,8 @@ def word2vec(word_index):
     import os
     import numpy as np
     embeddings_index = {}
-    f = open(os.path.join("/home/pamod100/src/paradox/embeddings", 'glove.6B.200d.txt'))
+    #f = open(os.path.join("/home/pamod100/src/paradox/embeddings", 'glove.6B.200d.txt'))
+    f = open(os.path.join("embeddings", 'glove.6B.200d.txt'))
     for line in f:
         values = line.split()
         word = values[0]
