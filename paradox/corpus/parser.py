@@ -1,7 +1,16 @@
 import logging
+import json
 
 
-def parse(rawfile_path=None, gsfile_path=None):
+def parse(mapping="corpus/mapping.json"):
+    mapping = json.loads(open(mapping).read())
+    pairs = []
+    for k, v in mapping.iteritems():
+        pairs.extend(_parse(rawfile_path=k, gsfile_path=v))
+    return pairs
+
+
+def _parse(rawfile_path=None, gsfile_path=None):
     logging.info("Parsing file: {}".format(rawfile_path))
     pairs = []
     with open(rawfile_path) as raw_file:
