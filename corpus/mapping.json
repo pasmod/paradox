@@ -9,15 +9,15 @@
 	"corpus/2014/raw/deft-news.txt": "corpus/2014/gs/deft-news.txt",
 	"corpus/2014/raw/headlines.txt": "corpus/2014/gs/headlines.txt",
 	"corpus/2014/raw/images.txt": "corpus/2014/gs/images.txt",
-	"corpus/2014/raw/tweet_news.txt": "corpus/2014/gs/tweet-news.txt",
-	"corpus/2015/raw/answers-forum.txt": "corpus/2015/gs/answers-forum.txt",
+	"corpus/2014/raw/tweet-news.txt": "corpus/2014/gs/tweet-news.txt",
+	"corpus/2015/raw/answers-forums.txt": "corpus/2015/gs/answers-forums.txt",
 	"corpus/2015/raw/answers-students.txt": "corpus/2015/gs/answers-students.txt",
 	"corpus/2015/raw/belief.txt": "corpus/2015/gs/belief.txt",
 	"corpus/2015/raw/headlines.txt": "corpus/2015/gs/headlines.txt",
 	"corpus/2015/raw/images.txt": "corpus/2015/gs/images.txt",
 	"corpus/2016/raw/answer-answer.txt": "corpus/2016/gs/answer-answer.txt",
 	"corpus/2016/raw/plagiarism.txt": "corpus/2016/gs/plagiarism.txt",
-	"corpus/2016/raw/postediting.txt": "corpus/2016/gs/posteiditng.txt",
+	"corpus/2016/raw/postediting.txt": "corpus/2016/gs/postediting.txt",
 	"corpus/2016/raw/headlines.txt": "corpus/2016/gs/headlines.txt",
 	"corpus/2016/raw/question-question.txt": "corpus/2016/gs/question-question.txt"
 }
