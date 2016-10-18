@@ -60,32 +60,34 @@ def _transform(news, tokenizer):
 
 def _construct_pairs(sentences, headline):
     min_num_sentences = 10
+    min_sentence_length = 50
     pairs = []
     if sentences and len(sentences) >= min_num_sentences:
         first_sentence = sentences[0]
-        pairs.append({"sentences":
-                      [first_sentence, headline],
-                      "label": True})
-        pairs.append({"sentences":
-                      [headline, first_sentence],
-                      "label": True})
-        pairs.append({"sentences":
-                      [first_sentence, first_sentence],
-                      "label": True})
-        pairs.append({"sentences":
-                      [headline, headline],
-                      "label": True})
-        shuffle(sentences)
-        pairs.append({"sentences":
-                      [sentences[0], sentences[1]],
-                      "label": False})
-        pairs.append({"sentences":
-                      [sentences[1], sentences[0]],
-                      "label": False})
-        pairs.append({"sentences":
-                      [sentences[2], sentences[3]],
-                      "label": False})
-        pairs.append({"sentences":
-                      [sentences[3], sentences[2]],
-                      "label": False})
+        if len(first_sentence) > min_sentence_length and len(headline) > min_sentence_length:
+            pairs.append({"sentences":
+                          [first_sentence, headline],
+                          "label": True})
+            pairs.append({"sentences":
+                          [headline, first_sentence],
+                          "label": True})
+            pairs.append({"sentences":
+                          [first_sentence, first_sentence],
+                          "label": True})
+            pairs.append({"sentences":
+                          [headline, headline],
+                          "label": True})
+            shuffle(sentences)
+            pairs.append({"sentences":
+                          [sentences[0], sentences[1]],
+                          "label": False})
+            pairs.append({"sentences":
+                          [sentences[1], sentences[0]],
+                          "label": False})
+            pairs.append({"sentences":
+                          [sentences[2], sentences[3]],
+                          "label": False})
+            pairs.append({"sentences":
+                          [sentences[3], sentences[2]],
+                          "label": False})
     return pairs
