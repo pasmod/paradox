@@ -20,6 +20,7 @@ RUN pip install lxml
 RUN pip install httplib2
 RUN pip install --upgrade scikit-learn
 RUN pip install pandas_confusion
+RUN pip install git+https://github.com/tagucci/pythonrouge.git
 
 
 WORKDIR /var/www
