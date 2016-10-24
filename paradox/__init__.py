@@ -1,4 +1,4 @@
-from paradox.loggers.logstash_formatter import LogstashFormatterV2
+from paradox.logstash_formatter import LogstashFormatterV2
 import logging
 
 
