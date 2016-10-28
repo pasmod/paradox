@@ -11,7 +11,7 @@ def remove_stopwords(tokens):
 
 
 def tokenize(text):
-    return wordpunct_tokenize(text)
+    return wordpunct_tokenize(text.lower())
 
 
 def preprocess(text):
