@@ -1,10 +1,24 @@
 import io
 
 
+def map_dim_to_file(dim=200):
+    if dim == 50:
+        return "glove/glove.6B.50d.txt"
+    elif dim == 100:
+        return "glove/glove.6B.100d.txt"
+    elif dim == 200:
+        return "glove/glove.6B.200d.txt"
+    elif dim == 300:
+        return "glove/glove.6B.300d.txt"
+    else:
+        return ValueError("Dimension {} is not supported!".format(dim))
+
+
 class Glove(object):
 
     @classmethod
-    def load(cls, filename):
+    def load(cls, dim=200):
+        filename = map_dim_to_file(dim=dim)
         dct = {}
 
         with io.open(filename, 'r', encoding='utf-8') as savefile:
