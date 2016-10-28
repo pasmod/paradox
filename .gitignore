@@ -1,4 +1,4 @@
 *.pyc
 .cache/
 paradox/test.py
-embeddings/
+glove/
