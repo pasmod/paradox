@@ -19,20 +19,24 @@ class Glove(object):
     @classmethod
     def load(cls, dim=200):
         filename = map_dim_to_file(dim=dim)
+        cls.filename = filename
         dct = {}
-
         with io.open(filename, 'r', encoding='utf-8') as savefile:
             for i, line in enumerate(savefile):
                 tokens = line.split(' ')
-
                 word = tokens[0]
-                entries = tokens[1:]
-
-                dct[word] = [float(x) for x in entries]
+                dct[word] = i
         instance = Glove()
         instance.dct = dct
-
         return instance
 
     def vector(self, word):
-        return self.dct.get(word, None)
+        idx = self.dct.get(word, None)
+        if not idx:
+            return None
+        with open(self.filename) as fp:
+            for i, line in enumerate(fp):
+                if i == idx:
+                    tokens = line.split(' ')
+                    entries = tokens[1:]
+                    return [float(x) for x in entries]
