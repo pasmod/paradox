@@ -23,5 +23,7 @@ def _parse(rawfile_path=None, gsfile_path=None):
                 if gs_line.replace("\n", "").isdigit():
                     gs = float(gs_line.replace("\n", ""))
                     split = raw_line.split("\t")
-                    pairs.append((split[0], split[1], gs))
+                    pairs.append((split[0].replace("\n", "") +
+                                  '<<STOP>>' +
+                                  split[1].replace("\n", ""), gs))
     return pairs
