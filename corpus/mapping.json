@@ -1,5 +1,5 @@
 {
-    "train": [
+    "train": {
         "sts2012-en-test/STS.input.MSRpar.txt": "sts2012-en-test/STS.gs.MSRpar.txt",
         "sts2012-en-test/STS.input.MSRvid.txt": "sts2012-en-test/STS.gs.MSRvid.txt",
         "sts2012-en-test/STS.input.SMTeuroparl.txt": "sts2012-en-test/STS.gs.SMTeuroparl.txt",
@@ -14,7 +14,7 @@
         "sts2014-en-train/STS.input.deft-forum.txt": "sts2014-en-train/STS.gs.deft-forum.txt",
         "sts2014-en-train/STS.input.deft-news.txt": "sts2014-en-train/STS.gs.deft-news.txt",
         "sts2014-en-train/STS.input.headlines.txt": "sts2014-en-train/STS.gs.headlines.txt",
-        "sts2014-en-train/TS.input.images.txt": "sts2014-en-train/STS.gs.images.txt",
+        "sts2014-en-train/STS.input.images.txt": "sts2014-en-train/STS.gs.images.txt",
         "sts2014-en-train/STS.input.OnWN.txt": "sts2014-en-train/STS.gs.OnWN.txt",
         "sts2014-en-train/STS.input.tweet-news.txt": "sts2014-en-train/STS.gs.tweet-news.txt",
         "sts2015-en-test/STS.input.answers-forums.txt": "sts2015-en-test/STS.gs.answers-forums.txt",
@@ -27,12 +27,12 @@
         "sts2015-en-train/data/raw/sts/STS.input.belief.txt": "sts2015-en-train/data/gs/STS.gs.belief.txt",
         "sts2015-en-train/data/raw/sts/STS.input.headlines.txt": "sts2015-en-train/data/gs/STS.gs.headlines.txt",
         "sts2015-en-train/data/raw/sts/STS.input.images.txt": "sts2015-en-train/data/gs/STS.gs.images.txt"
-    ],
-    "test": [
+    },
+    "test": {
         "sts2016-en-test/STS2016.input.answer-answer.txt":"sts2016-en-test/STS2016.gs.answer-answer.txt",
         "sts2016-en-test/STS2016.input.headlines.txt":"sts2016-en-test/STS2016.gs.headlines.txt",
         "sts2016-en-test/STS2016.input.plagiarism.txt":"sts2016-en-test/STS2016.gs.plagiarism.txt",
         "sts2016-en-test/STS2016.input.postediting.txt":"sts2016-en-test/STS2016.gs.postediting.txt",
         "sts2016-en-test/STS2016.input.question-question.txt":"sts2016-en-test/STS2016.gs.question-question.txt"
-    ]
+    }
 }
