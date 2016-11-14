@@ -1,0 +1,4 @@
+The data directory stores all the raw files and post-filtered files.
+The perl directory stores all the perl scripts.
+
+Please go to perl directory, and follow the readme file to perform post-filtering.

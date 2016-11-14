@@ -1,0 +1,11 @@
+1. read data from csv files
+perl  read_csv.pl  ../data/raw/mturk  ../data/clean/text
+
+2. choose the pairs that are in the sts2015 data set
+perl  find_pairs.pl  ../data/clean/text  ../data/raw/sts  ../data/clean/text.clean
+
+3. select a subset with high inter-annotator agreement and reasonable difficulty
+perl  select_subset.pl  ../data/clean/text.clean  ../data/filter
+
+4. produce the final goldstandard files
+perl  get_gs.pl  ../data/raw/sts  ../data/filter  ../data/gs
