@@ -22,6 +22,8 @@ def context(text1, text2):
     tokens2 = preprocess(text2)
     vectors1 = filter(lambda v: v, [glove.vector(token) for token in tokens1])
     vectors2 = filter(lambda v: v, [glove.vector(token) for token in tokens2])
+    if len(vectors1) == 0 or len(vectors2) == 0:
+        return 2.5
     center1 = np.average(np.array(vectors1), axis=0)
     center2 = np.average(np.array(vectors2), axis=0)
     return 1 - cosine(center1, center2)
@@ -32,7 +34,7 @@ def similarity(text1, text2, levels=['surface', 'context']):
     for level in levels:
         if level == 'surface':
             sims.append(surface(text1, text2))
-        if level == 'context':
+        elif level == 'context':
             sims.append(context(text1, text2))
         else:
             raise ValueError("Level {} not supported!".format(level))
@@ -54,10 +56,13 @@ class Similarity(BaseEstimator):
         self.levels = levels
 
     def fit(self, X, y):
-        return X
+        return self
 
     def transform(self, X):
-        return map(lambda x: self._transform(x), X)
+        a = []
+        for x in X:
+            a.append(self._transform(x))
+        return a
 
     def _transform(self, x):
         pair = x.split("<<STOP>>")
