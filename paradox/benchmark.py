@@ -4,7 +4,6 @@ from pipeline import pipeline
 import k_neighbors_regressor
 import numpy as np
 import similarity
-import logging
 import parser
 
 
@@ -12,9 +11,9 @@ def benchmark(X_train, y_train, transformers, estimator, n_folds=10):
     skf = KFold(len(y_train), n_folds=n_folds, shuffle=True, random_state=0)
     p = pipeline(transformers=transformers, estimator=estimator)
     fold, pcs, rmses = 1, [], []
-    logging.info('Starting cross validation: num_fold={}'.format(n_folds))
+    print('Starting cross validation: num_fold={}'.format(n_folds))
     for train_index, test_index in skf:
-        logging.info('Evaluating fold {}'.format(fold))
+        print('Evaluating fold {}'.format(fold))
         X_train_fold = [X_train[i] for i in train_index]
         y_train_fold = [y_train[i] for i in train_index]
         X_test_fold = [X_train[i] for i in test_index]
@@ -42,4 +41,4 @@ X = [pair[0] for pair in pairs]
 y = [pair[1] for pair in pairs]
 transformer = similarity.build()
 estimator = k_neighbors_regressor.build()
-benchmark(X, y, [transformer], estimator, n_folds=10)
+benchmark(X, y, [transformer], estimator, n_folds=2)
