@@ -9,3 +9,4 @@ download_models:
 	unzip glove.6B.zip -d tmp/
 	mv tmp/* glove.6B
 	rm -rf tmp/
+	rm glove.6B.zip
