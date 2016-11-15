@@ -23,7 +23,7 @@ def benchmark(X_train, y_train, transformers, estimator, n_folds=10):
         pcs.append(pearson(y_test_fold, y_pred_fold))
         rmses.append(mse(y_test_fold, y_pred_fold))
         fold = fold + 1
-    report(pcs, rmses, y_pred_fold, n_folds)
+        report(pcs, rmses, y_pred_fold, n_folds)
 
 
 def report(correlations, errors, y_pred_fold, n_folds=None):
