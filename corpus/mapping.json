@@ -29,10 +29,10 @@
         "sts2015-en-train/data/raw/sts/STS.input.images.txt": "sts2015-en-train/data/gs/STS.gs.images.txt"
     },
     "test": {
-        "sts2016-en-test/STS2016.input.answer-answer.txt":"sts2016-en-test/STS2016.gs.answer-answer.txt",
-        "sts2016-en-test/STS2016.input.headlines.txt":"sts2016-en-test/STS2016.gs.headlines.txt",
-        "sts2016-en-test/STS2016.input.plagiarism.txt":"sts2016-en-test/STS2016.gs.plagiarism.txt",
-        "sts2016-en-test/STS2016.input.postediting.txt":"sts2016-en-test/STS2016.gs.postediting.txt",
-        "sts2016-en-test/STS2016.input.question-question.txt":"sts2016-en-test/STS2016.gs.question-question.txt"
+        "answer-answer": {"sts2016-en-test/STS2016.input.answer-answer.txt": "sts2016-en-test/STS2016.gs.answer-answer.txt"},
+        "headlines": {"sts2016-en-test/STS2016.input.headlines.txt": "sts2016-en-test/STS2016.gs.headlines.txt"},
+        "plagiarism": {"sts2016-en-test/STS2016.input.plagiarism.txt": "sts2016-en-test/STS2016.gs.plagiarism.txt"},
+        "postediting": {"sts2016-en-test/STS2016.input.postediting.txt": "sts2016-en-test/STS2016.gs.postediting.txt"},
+        "question-question": {"sts2016-en-test/STS2016.input.question-question.txt": "sts2016-en-test/STS2016.gs.question-question.txt"}
     }
 }
