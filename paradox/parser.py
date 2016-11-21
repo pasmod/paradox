@@ -3,11 +3,18 @@ import json
 import os
 
 
-def parse(mapping="corpus/mapping.json", mode='train'):
+def parse(mapping="corpus/mapping.json", mode='train',
+          categories=['question-question']):
     mapping = json.loads(open(mapping).read())[mode]
     pairs = []
-    for k, v in mapping.iteritems():
-        pairs.extend(_parse(rawfile_path=k, gsfile_path=v))
+    if mode == 'train':
+        for k, v in mapping.iteritems():
+            pairs.extend(_parse(rawfile_path=k, gsfile_path=v))
+    if mode == 'test':
+        mapping = mapping["test"]
+        for c in categories:
+            for k, v in mapping[c].iteritems():
+                pairs.extend(_parse(rawfile_path=k, gsfile_path=v))
     return pairs
 
 
