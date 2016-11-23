@@ -20,13 +20,30 @@ the command ```make download_models``` assumes that you have already downloaded 
 For training, the semantic similarity corpora from SemEval (2012-2016) are used. The training data
 are available under ```/corpus```.
 
-# Required Models
-Following models are required to run paradox:
-- Glove: Download the models [here](http://nlp.stanford.edu/data/glove.6B.zip) and put them in the folder ```glove.6B```.
 
 # Evaluation
-To evaluate paradox using cross validation use:
+The evaluation scipt reports the results on the test data set of the SemEval2016 challange. To see
+the resport run the following commands:
+```bash
+source env/bin/activate
+python paradox/benchmark.py
+```
 
+# Citation
+I you want to cite us in your work, please use the following bibtex entry:
+``` bash
+@InProceedings{liebeck-EtAl:2016:SemEval,
+    author    = {Liebeck, Matthias and Pollack, Philipp and Modaresi, Pashutan and Conrad, Stefan},
+    title     = {HHU at SemEval-2016 Task 1: Multiple Approaches to Measuring Semantic Textual Similarity},
+    booktitle = {Proceedings of the 10th International Workshop on Semantic Evaluation (SemEval-2016)},
+    month     = {June},
+    year      = {2016},
+    address   = {San Diego, California},
+    publisher = {Association for Computational Linguistics},
+    pages     = {607--613},
+    url       = {TOBEFILLED-http://www.aclweb.org/anthology/W/W05/W05-0292}
+}
+```
 
 # ToDos:
 - Imlement topical similarity based of the LDA models.
