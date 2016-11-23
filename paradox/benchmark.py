@@ -40,14 +40,24 @@ pairs = parser.parse(mode="train")
 X = [pair[0] for pair in pairs]
 y = [pair[1] for pair in pairs]
 transformer = similarity.build()
-estimator = k_neighbors_regressor.build(n_neighbors=2)
+estimator = k_neighbors_regressor.build(n_neighbors=4)
 #benchmark(X, y, [transformer], estimator, n_folds=2)
-test_pairs = parser.parse(mode="test", categories=["question-question"])
 p = pipeline(transformers=[transformer], estimator=estimator)
 p.fit(X, y)
-X = [pair[0] for pair in test_pairs]
-y = [pair[1] for pair in test_pairs]
-y_pred = p.predict(X)
-pcs = [pearson(y, y_pred)]
-rmses = [mse(y, y_pred)]
-report(pcs, rmses, y_pred, 0)
+
+
+def test(model=None, categories=[]):
+    print "Testing on Category {}".format(categories)
+    test_pairs = parser.parse(mode="test", categories=categories)
+    X = [pair[0] for pair in test_pairs]
+    y = [pair[1] for pair in test_pairs]
+    y_pred = p.predict(X)
+    pcs = [pearson(y, y_pred)]
+    rmses = [mse(y, y_pred)]
+    report(pcs, rmses, y_pred, 0)
+
+test(p, categories=["answer-answer"])
+test(p, categories=["question-question"])
+test(p, categories=["headlines"])
+test(p, categories=["postediting"])
+test(p, categories=["plagiarism"])
