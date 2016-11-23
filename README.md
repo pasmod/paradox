@@ -30,7 +30,7 @@ python paradox/benchmark.py
 ```
 
 # Citation
-I you want to cite us in your work, please use the following bibtex entry:
+This repository contains the code for the DeepLDA approach introduced in the following paper. Use the following bibtex entry to cite us:
 ``` bash
 @InProceedings{liebeck-EtAl:2016:SemEval,
     author    = {Liebeck, Matthias and Pollack, Philipp and Modaresi, Pashutan and Conrad, Stefan},
