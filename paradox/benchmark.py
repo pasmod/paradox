@@ -22,7 +22,7 @@ def test(model=None, categories=[]):
     y_pred = p.predict(X)
     pcs = [pearson(y, y_pred)]
     rmses = [mse(y, y_pred)]
-    report(pcs, rmses, y_pred, 0)
+    report(pcs, rmses, y_pred)
 
 
 pairs = parser.parse(mode="train")
