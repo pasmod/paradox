@@ -43,10 +43,10 @@ transformer = similarity.build()
 estimator = k_neighbors_regressor.build(n_neighbors=2)
 #benchmark(X, y, [transformer], estimator, n_folds=2)
 test_pairs = parser.parse(mode="test", categories=["question-question"])
-X = [pair[0] for pair in test_pairs]
-y = [pair[1] for pair in test_pairs]
 p = pipeline(transformers=[transformer], estimator=estimator)
 p.fit(X, y)
+X = [pair[0] for pair in test_pairs]
+y = [pair[1] for pair in test_pairs]
 y_pred = p.predict(X)
 pcs = [pearson(y, y_pred)]
 rmses = [mse(y, y_pred)]
