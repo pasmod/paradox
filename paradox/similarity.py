@@ -23,10 +23,10 @@ def context(text1, text2):
     vectors1 = filter(lambda v: v, [glove.vector(token) for token in tokens1])
     vectors2 = filter(lambda v: v, [glove.vector(token) for token in tokens2])
     if len(vectors1) == 0 or len(vectors2) == 0:
-        return 2.5
+        return 0.5
     center1 = np.average(np.array(vectors1), axis=0)
     center2 = np.average(np.array(vectors2), axis=0)
-    return 1 - cosine(center1, center2)
+    return cosine(center1, center2)
 
 
 def similarity(text1, text2, levels=['surface', 'context']):
