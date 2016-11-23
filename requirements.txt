@@ -2,3 +2,4 @@ git+https://github.com/tagucci/pythonrouge.git
 scipy
 numpy
 sklearn
+nltk
