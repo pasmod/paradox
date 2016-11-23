@@ -46,4 +46,4 @@ This repository contains the code for the DeepLDA approach introduced in the fol
 ```
 
 ## ToDos:
-- Imlement topical similarity based of the LDA models.
+- Implement topical similarity based of the LDA models.
