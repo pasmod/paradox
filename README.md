@@ -1,4 +1,7 @@
 # Paradox: Automatic Paraphrase Identification
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/pasmod/paradox/blob/master/License.md)
+
 Given two sentences, paradox returns a continuous valued similarity score
 on a scale from 0 to 5, with 0 indicating that the semantics of the sentences are completely
 independent and 5 signifying semantic equivalence.
