@@ -39,6 +39,19 @@ def report(correlations, errors, y_pred_fold, n_folds=None):
 pairs = parser.parse(mode="train")
 X = [pair[0] for pair in pairs]
 y = [pair[1] for pair in pairs]
+print X[0]
+print y[0]
 transformer = similarity.build()
-estimator = k_neighbors_regressor.build()
-benchmark(X, y, [transformer], estimator, n_folds=2)
+estimator = k_neighbors_regressor.build(n_neighbors=2)
+#benchmark(X, y, [transformer], estimator, n_folds=2)
+test_pairs = parser.parse(mode="train", categories=["question-question"])
+# X = [pair[0] for pair in test_pairs]
+#y = [pair[1] for pair in test_pairs]
+print X[0]
+print y[0]
+p = pipeline(transformers=[transformer], estimator=estimator)
+p.fit(X, y)
+y_pred = p.predict(X)
+pcs = [pearson(y, y_pred)]
+rmses = [mse(y, y_pred)]
+report(pcs, rmses, y_pred, 0)
