@@ -15,7 +15,7 @@ def report(correlations, errors, y_pred_fold):
 
 
 def test(model=None, categories=[]):
-    print "Testing on Category {}".format(categories)
+    print("Testing on Category {}".format(categories))
     test_pairs = parser.parse(mode="test", categories=categories)
     X = [pair[0] for pair in test_pairs]
     y = [pair[1] for pair in test_pairs]
