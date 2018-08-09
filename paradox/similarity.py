@@ -20,8 +20,8 @@ def surface(text1, text2, method='ROUGE-2'):
 def context(text1, text2):
     tokens1 = preprocess(text1)
     tokens2 = preprocess(text2)
-    vectors1 = filter(lambda v: v, [glove.vector(token) for token in tokens1])
-    vectors2 = filter(lambda v: v, [glove.vector(token) for token in tokens2])
+    vectors1 = list(filter(lambda v: v, [glove.vector(token) for token in tokens1]))
+    vectors2 = list(filter(lambda v: v, [glove.vector(token) for token in tokens2]))
     if len(vectors1) == 0 or len(vectors2) == 0:
         return 0.5
     center1 = np.average(np.array(vectors1), axis=0)
