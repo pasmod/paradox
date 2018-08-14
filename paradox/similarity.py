@@ -2,8 +2,8 @@ from scipy.spatial.distance import cosine
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator
 from pythonrouge import pythonrouge
-from preprocessor import preprocess
-from glove import Glove
+from .preprocessor import preprocess
+from .glove import Glove
 import numpy as np
 
 glove = Glove.load(dim=200)
