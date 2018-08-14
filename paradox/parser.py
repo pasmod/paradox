@@ -8,12 +8,12 @@ def parse(mapping="corpus/mapping.json", mode='train',
     mapping = json.loads(open(mapping).read())[mode]
     pairs = []
     if mode == 'train':
-        for k, v in mapping.iteritems():
+        for k, v in mapping.items():
             pairs.extend(_parse(rawfile_path=k, gsfile_path=v))
     if mode == 'test':
         for c in categories:
-            pairs.extend(_parse(rawfile_path=mapping[c].keys()[0],
-                                gsfile_path=mapping[c].values()[0]))
+            pairs.extend(_parse(rawfile_path=list(mapping[c].keys())[0],
+                                gsfile_path=list(mapping[c].values())[0]))
     return pairs
 
 
