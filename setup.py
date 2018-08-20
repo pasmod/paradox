@@ -15,6 +15,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     install_requires=[
-        'pandas_confusion'
+        'pandas_confusion',
+        'rouge'
     ]
 )

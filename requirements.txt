@@ -1,4 +1,4 @@
-git+https://github.com/tagucci/pythonrouge.git
+rouge
 scipy
 numpy
 sklearn
