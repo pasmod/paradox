@@ -28,7 +28,7 @@ The evaluation scipt reports the results on the test data set of the SemEval2016
 the resport run the following commands:
 ```bash
 source env/bin/activate
-python paradox/benchmark.py
+python benchmark.py
 ```
 
 ## Citation

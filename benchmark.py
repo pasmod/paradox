@@ -1,9 +1,9 @@
-from metrics import pearson, mse
-from pipeline import pipeline
-import k_neighbors_regressor
+from paradox.metrics import pearson, mse
+from paradox.pipeline import pipeline
+from paradox import k_neighbors_regressor
 import numpy as np
-import similarity
-import parser
+from paradox import similarity
+from paradox import parser
 
 
 def report(correlations, errors, y_pred_fold):

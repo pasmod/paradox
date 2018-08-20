@@ -2,8 +2,9 @@ import logging
 import json
 import os
 
+from paradox import CORPUS_FOLDER
 
-def parse(mapping="corpus/mapping.json", mode='train',
+def parse(mapping=os.path.join(CORPUS_FOLDER, "mapping.json"), mode='train',
           categories=['question-question']):
     mapping = json.loads(open(mapping).read())[mode]
     pairs = []
@@ -19,10 +20,10 @@ def parse(mapping="corpus/mapping.json", mode='train',
 
 def _parse(rawfile_path=None, gsfile_path=None):
     pairs = []
-    with open(os.path.join("corpus", rawfile_path)) as raw_file:
+    with open(os.path.join(CORPUS_FOLDER, rawfile_path)) as raw_file:
         logging.info("Parsing raw file: {}".format(rawfile_path))
         raw_lines = raw_file.readlines()
-        with open(os.path.join("corpus", gsfile_path)) as gs_file:
+        with open(os.path.join(CORPUS_FOLDER, gsfile_path)) as gs_file:
             logging.info("Parsing gs file: {}".format(gsfile_path))
             gs_lines = gs_file.readlines()
             for raw_line, gs_line in zip(raw_lines, gs_lines):
