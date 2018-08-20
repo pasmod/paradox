@@ -41,8 +41,8 @@ def similarity(text1, text2, levels=['surface', 'context']):
     return sims
 
 
-def build(levels=['surface', 'context']):
-    pipeline = Pipeline([('transformer', Similarity(levels=levels))])
+def build(levels=['surface', 'context'], verbose=False):
+    pipeline = Pipeline([('transformer', Similarity(levels=levels, verbose=verbose))])
     return ('similarity', pipeline)
 
 
@@ -52,15 +52,24 @@ def param_grid():
 
 
 class Similarity(BaseEstimator):
-    def __init__(self, levels=['surface']):
+    def __init__(self, levels=['surface'], verbose=False):
         self.levels = levels
+        self.verbose = verbose
 
     def fit(self, X, y):
         return self
 
     def transform(self, X):
         a = []
-        for x in X:
+
+        tqdm = lambda x: x
+        if self.verbose:
+            try:
+                from tqdm import tqdm
+            except ImportError:
+                pass 
+
+        for x in tqdm(X):
             a.append(self._transform(x))
         return a
 
