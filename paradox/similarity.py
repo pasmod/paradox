@@ -1,21 +1,24 @@
 from scipy.spatial.distance import cosine
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator
-from pythonrouge import pythonrouge
+from rouge import Rouge
 from .preprocessor import preprocess
 from .glove import Glove
 import numpy as np
 
+rouge = Rouge()
 glove = Glove.load(dim=200)
 
-
-def surface(text1, text2, method='ROUGE-2'):
-    methods = ['ROUGE-1', 'ROUGE-2', 'ROUGE-3', 'ROUGE-SU4', 'ROUGE-L']
+def surface(text1, text2, method='rouge-2', metric='f'):
+    methods = ['rouge-1', 'rouge-2', 'rouge-3', 'rouge-SU4', 'rouge-L']
+    metrics = ['f', 'p', 'r']
     if method not in methods:
         raise ValueError("Method {} is not supported."
                          "Available methods: {}".format(method, methods))
-    return pythonrouge.pythonrouge(text1, text2)[method]
-
+    if metric not in metrics:
+        raise ValueError("Metric {} is not supported."
+                         "Available metrics: {}".format(method, methods))
+    return rouge.get_scores(text1, text2)[0][method][metric]
 
 def context(text1, text2):
     tokens1 = preprocess(text1)
