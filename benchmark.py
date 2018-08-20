@@ -14,12 +14,12 @@ def report(correlations, errors, y_pred_fold):
     print('{}'.format('*' * 40))
 
 
-def test(model=None, categories=[]):
+def test(model, categories=[]):
     print("Testing on Category {}".format(categories))
     test_pairs = parser.parse(mode="test", categories=categories)
     X = [pair[0] for pair in test_pairs]
     y = [pair[1] for pair in test_pairs]
-    y_pred = p.predict(X)
+    y_pred = model.predict(X)
     pcs = [pearson(y, y_pred)]
     rmses = [mse(y, y_pred)]
     report(pcs, rmses, y_pred)
@@ -28,7 +28,7 @@ def test(model=None, categories=[]):
 pairs = parser.parse(mode="train")
 X = [pair[0] for pair in pairs]
 y = [pair[1] for pair in pairs]
-transformer = similarity.build()
+transformer = similarity.build(verbose=True)
 estimator = k_neighbors_regressor.build(n_neighbors=4)
 p = pipeline(transformers=[transformer], estimator=estimator)
 p.fit(X, y)
